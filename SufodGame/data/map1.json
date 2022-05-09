@@ -1,0 +1,132 @@
+{
+    "size": {
+        "width": 5,
+        "height": 5
+    },
+    "listSquare": [{
+            "x": 0,
+            "y": 0,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 1,
+            "y": 0,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 2,
+            "y": 0,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 3,
+            "y": 0,
+            "tile": { "namespace": "MAP", "key": "BUSH" }
+        },
+        {
+            "x": 4,
+            "y": 0,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 0,
+            "y": 1,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 1,
+            "y": 1,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 2,
+            "y": 1,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 3,
+            "y": 1,
+            "tile": { "namespace": "MAP", "key": "BUSH" }
+        },
+        {
+            "x": 4,
+            "y": 1,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 0,
+            "y": 2,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 1,
+            "y": 2,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 2,
+            "y": 2,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 3,
+            "y": 2,
+            "tile": { "namespace": "MAP", "key": "BUSH" }
+        },
+        {
+            "x": 4,
+            "y": 2,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 0,
+            "y": 3,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 1,
+            "y": 3,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 2,
+            "y": 3,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 3,
+            "y": 3,
+            "tile": { "namespace": "MAP", "key": "BUSH" }
+        },
+        {
+            "x": 4,
+            "y": 3,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 0,
+            "y": 4,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 1,
+            "y": 4,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 2,
+            "y": 4,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 3,
+            "y": 4,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "tile": { "namespace": "MAP", "key": "GRASS" }
+        }
+    ]
+}
