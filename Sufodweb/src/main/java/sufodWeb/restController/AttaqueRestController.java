@@ -11,35 +11,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sufod.entity.Attaque;
 import sufod.entity.Compte;
+import sufod.services.AttaqueService;
 import sufod.entity.JsonViews;
-import sufod.services.CompteServices;
-
-
 
 @RestController
-@RequestMapping("/api/compte")
-public class CompteRestController {
-	
+@RequestMapping("/api/attaque")
+public class AttaqueRestController {
 	@Autowired
-	private CompteServices compteServices ;
+	private AttaqueService attaqueService ;
 	
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
-	public List<Compte> getAll() {
-		return compteServices.getAll();
+	public List<Attaque> getAll() {
+		return attaqueService.getAll();
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
-	public Compte create(@RequestBody Compte compte) {
-		return compteServices.create(compte);
+	public Attaque create(@RequestBody Attaque attaque) {
+		return attaqueService.create(attaque);
 	}
 	
 	@GetMapping("personnage/{id}")
-	@JsonView(JsonViews.CompteWithPersonnage.class)
-	public Compte getCompte() {
-		return personnageService.getCompteByPersonnageId();
+	@JsonView(JsonViews.AttaquesWithPersonnage.class)
+	public List<Attaque> getAttaques() {
+		return personnageService.getAttaquesByPersonnageId();
 	}
-
+	
+	@GetMapping("monstre/{id}")
+	@JsonView(JsonViews.AttaquesWithMonstre.class)
+	public List<Attaque> getAttaques() {
+		return monstreService.getAttaquesByMonstreId();
+	}
 }

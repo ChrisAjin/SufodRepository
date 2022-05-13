@@ -11,35 +11,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sufod.entity.Compte;
+import sufod.entity.Monstre;
+import sufod.services.MonstreService;
 import sufod.entity.JsonViews;
-import sufod.services.CompteServices;
-
-
 
 @RestController
-@RequestMapping("/api/compte")
-public class CompteRestController {
-	
+@RequestMapping("/api/monstres")
+public class MonstreRestController {
+
 	@Autowired
-	private CompteServices compteServices ;
-	
-	@JsonView(JsonViews.Common.class)
-	@GetMapping("")
-	public List<Compte> getAll() {
-		return compteServices.getAll();
-	}
+		private MonstreService monstreService  ;
+		
+		@JsonView(JsonViews.Common.class)
+		@GetMapping("")
+		public List<Monstre> getAll() {
+			return monstreService.getAll();
+		}
 
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
-	public Compte create(@RequestBody Compte compte) {
-		return compteServices.create(compte);
+	public Monstre create(@RequestBody Monstre monstre) {
+		return monstreService.create(monstre);
 	}
-	
-	@GetMapping("personnage/{id}")
-	@JsonView(JsonViews.CompteWithPersonnage.class)
-	public Compte getCompte() {
-		return personnageService.getCompteByPersonnageId();
-	}
-
 }
