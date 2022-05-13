@@ -18,4 +18,30 @@ public class JsonViews {
 
 	}
 
+	public static class CompteWithPersonnages extends Common {
+
+	}
+
+	public static class AttaquesWithPersonnage extends Common {
+
+	}
+
+	public static class AttaquesWithMonstre extends Common {
+
+	}
+	
+	public static class CompteWithPersonnage extends Common {
+
+	}
+	
+	public static class PersonnagesWithCompte extends Common {
+
+	}
+	public static class PersonnagesWithAttaque extends Common {
+
+	}
+	
+	public static class PersonnagesWithEquipement extends Common {
+
+	}
 }

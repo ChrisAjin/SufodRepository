@@ -25,8 +25,8 @@ public class MonstreService {
 		return monstreRepository.findById(id).orElseThrow(MonstreException::new);
 	}
 	/*----------- Create -----------*/
-	public void create(Monstre monstre) {
-		monstreRepository.save(monstre);
+	public Monstre create(Monstre monstre) {
+		return monstreRepository.save(monstre);
 	}
 	/*----------- Update -----------*/
 	public Monstre update(Monstre monstre) {

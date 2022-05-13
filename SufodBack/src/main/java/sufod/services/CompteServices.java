@@ -37,8 +37,8 @@ public class CompteServices {
 		return compteRepository.seConnecter(login, password).orElseThrow(RuntimeException::new);
 	}
 
-	public void create(Compte compte) {
-		compteRepository.save(compte);
+	public Compte create(Compte compte) {
+		return compteRepository.save(compte);
 	}
 
 	public Compte update(Compte compte) {

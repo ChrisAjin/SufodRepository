@@ -13,7 +13,7 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>SufodRepository</groupId>
+			<groupId>GitHub</groupId>
 			<artifactId>SufodBack</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>

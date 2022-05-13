@@ -12,15 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sufod.entity.Attaque;
-import sufod.entity.Compte;
-import sufod.services.AttaqueService;
 import sufod.entity.JsonViews;
+import sufod.services.AttaqueService;
+import sufod.services.MonstreService;
+import sufod.services.PersonnageService;
 
 @RestController
 @RequestMapping("/api/attaque")
 public class AttaqueRestController {
 	@Autowired
 	private AttaqueService attaqueService ;
+	@Autowired
+	private PersonnageService personnageService ;
+	@Autowired
+	private MonstreService monstreService ;
+	
 	
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
@@ -36,13 +42,13 @@ public class AttaqueRestController {
 	
 	@GetMapping("personnage/{id}")
 	@JsonView(JsonViews.AttaquesWithPersonnage.class)
-	public List<Attaque> getAttaques() {
+	public List<Attaque> getAttaquesPersonnage() {
 		return personnageService.getAttaquesByPersonnageId();
 	}
 	
 	@GetMapping("monstre/{id}")
 	@JsonView(JsonViews.AttaquesWithMonstre.class)
-	public List<Attaque> getAttaques() {
+	public List<Attaque> getAttaquesMonstre() {
 		return monstreService.getAttaquesByMonstreId();
 	}
 }
