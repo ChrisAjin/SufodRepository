@@ -34,6 +34,11 @@ public class ItemService {
 			throw new ItemException("id inconnu");
 		});
 	}
+	
+	public List<Equipement> getAllEquipementByBodypart(String bodypart) {
+		return itemRepo.findByBodyPart(bodypart);
+	}
+	
 
 	public Item create(Item item) {
 		if (item.getId() != null) {

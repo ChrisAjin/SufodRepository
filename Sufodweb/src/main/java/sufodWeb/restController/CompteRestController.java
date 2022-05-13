@@ -38,8 +38,8 @@ public class CompteRestController {
 	
 	@GetMapping("personnage/{id}")
 	@JsonView(JsonViews.CompteWithPersonnage.class)
-	public Compte getCompte() {
-		return personnageService.getCompteByPersonnageId();
+	public Compte getCompte(Long id) {
+		return compteServices.getCompteByPersonnageId(id);
 	}
 
 }

@@ -19,8 +19,23 @@ public class PersonnageService {
 		return personnageRepository.findAll();
 	}
 	
+	
+	public List<Personnage> getAllPersonnageByJoueurId(Long id) {
+		return personnageRepository.findPersonnagesByIdCompte(id);
+	}
+	
+	public List<Personnage> getAllPersonnageByAttaqueId(Long id) {
+		return personnageRepository.findPersonnagesByIdAttaque(id);
+	}
+	
+	public List<Personnage> getAllPersonnageByEquipementId(Long id) {
+		return personnageRepository.findPersonnagesByIdEquipement(id);
+	}
+	
+	
+	
 	/*----------- findByID -----------*/
-	public Personnage getById(Integer id) {
+	public Personnage getById(Long id) {
 		return personnageRepository.findById(id).orElseThrow(PersonnageException::new);
 	}
 	/*----------- Create -----------*/
@@ -37,7 +52,7 @@ public class PersonnageService {
 		
 	}
 	/*----------- deleteByID -----------*/
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		Personnage personnage = new Personnage();
 		personnage.setId(id);
 		delete(personnage);

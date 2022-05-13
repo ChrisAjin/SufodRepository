@@ -35,5 +35,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
 	@Query("select i from Item i left join fetch i.equipements")
 	Optional<Item> findEquipementsById(@Param("id") Long id);
+	
+	@Query("select e from Equipement e where e.bodypart=:bodypart")
+	List<Equipement> findByBodyPart(@Param("bodypart") String bodypart);
 
 }

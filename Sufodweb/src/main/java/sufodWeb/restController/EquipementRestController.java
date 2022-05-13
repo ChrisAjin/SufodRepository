@@ -35,6 +35,11 @@ public class EquipementRestController {
 		return (Equipement) itemService.getById(id);
 	}
 	
+	@GetMapping("equipement/{bodypart}/")
+	@JsonView(JsonViews.PersonnagesWithEquipement.class)
+	public List<Equipement> getPersonnageByEquipementId(@PathVariable String bodypart) {
+		return itemService.getAllEquipementByBodypart(bodypart);
+	}
 
 
 }

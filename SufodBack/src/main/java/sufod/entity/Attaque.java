@@ -8,9 +8,13 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -19,8 +23,11 @@ import javax.persistence.SequenceGenerator;
 public class Attaque {
 	@ManyToOne
 	private Monstre monstre;
-	@ManyToOne
-	private Personnage personnage;
+	@ManyToMany
+	@JoinTable(name = "personnages", 
+	joinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
+	inverseJoinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_personnage_id_fk")))
+	Set<Personnage> personnages;
 	private String nom;
 	private int degats;
 	private int paBase;

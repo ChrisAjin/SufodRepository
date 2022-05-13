@@ -1,9 +1,14 @@
 package sufod.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -12,8 +17,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 @DiscriminatorValue("e")
 public class Equipement extends Item {
 
-	@ManyToOne
-	private Personnage personnage;
+	@ManyToMany
+	@JoinTable(name = "personnages", 
+	joinColumns = @JoinColumn(name = "equipement_id", foreignKey = @ForeignKey(name = "personnage_equipement_id_fk")), 
+	inverseJoinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_personnage_id_fk")))
+	Set<Personnage> personnages;
 	@Column(name = "pv", nullable = false)
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "PV manquant")
