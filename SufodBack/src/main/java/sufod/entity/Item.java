@@ -2,6 +2,7 @@ package sufod.entity;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -10,16 +11,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
+//import sufod.entity.JsonViews;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 1)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "item")
+@SequenceGenerator(sequenceName = "seqItem", name = "seqItemSufod")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = Equipement.class, name = "equipement"),
+		@Type(value = Ingredient.class, name = "ingredient") })
+
 public abstract class Item {
-	protected String libelle;
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@JsonView({ JsonViews.Common.class })
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seqItemSufod")
 	@Id
 	protected Long id;
+	@Column(name = "libelle", nullable = false, length = 30)
+//	@JsonView(JsonViews.Common.class)
+	@NotEmpty(message = "Libelle manquant")
+	protected String libelle;
+	@Column(name = "description", nullable = false, length = 500)
+//	@JsonView(JsonViews.Common.class)
+	@NotEmpty(message = "Description manquante")
 	protected String description;
+	@NotEmpty(message = "aucune chance de drop?")
+//	@JsonView(JsonViews.Common.class)
+	@Column(name = "drop_chance")
 	protected double dropChance;
 
 	public Item() {
@@ -69,7 +97,7 @@ public abstract class Item {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(description, dropChance, id, libelle);
 	}
 
 	@Override
@@ -81,7 +109,9 @@ public abstract class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(description, other.description)
+				&& Double.doubleToLongBits(dropChance) == Double.doubleToLongBits(other.dropChance)
+				&& Objects.equals(id, other.id) && Objects.equals(libelle, other.libelle);
 	}
 
 }
