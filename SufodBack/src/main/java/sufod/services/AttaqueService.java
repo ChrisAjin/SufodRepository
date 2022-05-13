@@ -23,11 +23,11 @@ public class AttaqueService {
 		return attaqueRepository.findById(id).orElseThrow(AttaqueException::new);
 	}
 	/*----------- Create -----------*/
-	public void create(Attaque attaque) {
+	public Attaque create(Attaque attaque) {
 		if (attaque.getNom() == null || attaque.getNom().isEmpty()) {
 			throw new AttaqueException();
 		}
-		attaqueRepository.save(attaque);
+		return attaqueRepository.save(attaque);
 	}
 	/*----------- Update -----------*/
 	public Attaque update(Attaque attaque) {
