@@ -21,4 +21,8 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Query("Select f from Joueur f")
 	List<Joueur> findAllJoueurs();
+	
+	@Query("Select c form Compte c where c.id=:id")
+	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
+	
 }

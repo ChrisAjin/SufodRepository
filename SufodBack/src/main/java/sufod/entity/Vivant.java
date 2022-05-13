@@ -1,7 +1,6 @@
 	
 package sufod.entity;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.EnumType;
@@ -10,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
@@ -23,7 +21,7 @@ public abstract class Vivant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 	@SequenceGenerator(name = "seq", sequenceName = "seq_vivant", initialValue = 1, allocationSize = 1)
-	protected int id;
+	protected Long id;
 	protected String nom;
 	protected String description;
 	
@@ -68,7 +66,7 @@ public abstract class Vivant {
 
 	
 
-	public Vivant(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
+	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
 			int defPhysique, int defDistance) {
 	
@@ -127,12 +125,12 @@ public abstract class Vivant {
 	}
 	
 	/*----------- Getters & Setters -----------*/
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

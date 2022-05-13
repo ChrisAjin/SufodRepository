@@ -24,6 +24,10 @@ public class CompteServices {
 	public List<Admin> getAllAdmin() {
 		return compteRepository.findAllAdmins();
 	}
+	
+	public Compte getCompteByPersonnageId(Long id) {
+		return compteRepository.findCompteByPersonnageId(id).orElseThrow(RuntimeException::new);
+	}
 
 	public List<Joueur> getAllJoueurs() {
 		return compteRepository.findAllJoueurs();

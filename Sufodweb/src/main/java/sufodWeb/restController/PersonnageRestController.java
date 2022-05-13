@@ -17,7 +17,7 @@ import sufod.entity.Personnage;
 import sufod.services.PersonnageService;
 
 @RestController
-@RequestMapping("/api/vivants/personnages")
+@RequestMapping("/api/vivants/personnage")
 public class PersonnageRestController {
 
 	@Autowired
@@ -31,14 +31,14 @@ public class PersonnageRestController {
 
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Personnage getById(@PathVariable Integer id) {
+	public Personnage getById(@PathVariable Long id) {
 		return (Personnage) personnageService.getById(id);
 	}
 	
 	@GetMapping("compte/{id}")
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
-	public List<Personnage> getPersonnageByCompteId(@PathVariable Long id) {
-		return personnageService.getAllPersonnageByCompteId(id);
+	public List<Personnage> getPersonnageByJoueurId(@PathVariable Long id) {
+		return personnageService.getAllPersonnageByJoueurId(id);
 	}
 	
 	@GetMapping("attaque/{id}")

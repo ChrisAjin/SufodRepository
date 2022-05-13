@@ -1,15 +1,15 @@
 package sufod.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @SequenceGenerator(sequenceName = "seqPersonnage", name = "seqPersonnageJPA")
@@ -39,8 +39,8 @@ public class Personnage extends Vivant {
 	private Admin admin;
 	@OneToMany(mappedBy = "personnage")
 	private List<Attaque> attaque;
-	@OneToMany(mappedBy = "personnage")
-	private List<Equipement> equipement;
+	@ManyToMany
+	Set<Equipement> equipement;
 
 	/*----------- Constrictors -----------*/
 
@@ -48,7 +48,7 @@ public class Personnage extends Vivant {
 
 	}
 
-	public Personnage(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
+	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
 			int defPhysique, int defDistance, int pc, Metier metier, int idCompte) {
 
