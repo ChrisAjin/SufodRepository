@@ -20,5 +20,15 @@ public class Ingredient extends Item {
 	public void setId(Long id) {
 		super.setId(id);
 	}
-	
+
+	@Override
+	public String getDescription() {
+		return super.getDescription();
+	}
+
+	@Override
+	public void setDescription(String Description) {
+		super.setDescription(Description);
+	}
+
 }

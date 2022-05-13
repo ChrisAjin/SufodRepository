@@ -14,5 +14,8 @@ public class JsonViews {
 
 	}
 
+	public static class PersonnageWithEquipement extends Common {
+
+	}
 
 }
