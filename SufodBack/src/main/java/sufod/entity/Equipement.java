@@ -3,46 +3,51 @@ package sufod.entity;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @DiscriminatorValue("e")
 public class Equipement extends Item {
 
+	@ManyToOne
+	private Personnage personnage;
 	@Column(name = "pv", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "PV manquant")
 	private int pv;
 	@Column(name = "def_magique", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Défense Magique manquante")
 	private double defMagique;
 	@Column(name = "def_physique", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Défense Physique manquante")
 	private double defPhysique;
 	@Column(name = "def_distance", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Défense Distance manquante")
 	private double defDistance;
 	@Column(name = "attaque_magique", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Attaque Magique manquante")
 	private double attMagique;
 	@Column(name = "attaque_physique", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Attaque Physique manquante")
 	private double attPhysique;
 	@Column(name = "attaque_distance", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Attaque Distance manquante")
 	private double attDistance;
 	@Column(name = "esquive", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Esquive manquante")
 	private double Esquive;
 	@Column(name = "localisation", nullable = false)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Localisation manquante")
 	PartieCorps localisation;
 

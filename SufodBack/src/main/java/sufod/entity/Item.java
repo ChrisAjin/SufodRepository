@@ -33,20 +33,20 @@ import com.fasterxml.jackson.annotation.JsonView;
 		@Type(value = Ingredient.class, name = "ingredient") })
 
 public abstract class Item {
-//	@JsonView({ JsonViews.Common.class })
+	@JsonView({ JsonViews.Common.class })
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seqItemSufod")
 	@Id
 	protected Long id;
 	@Column(name = "libelle", nullable = false, length = 30)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Libelle manquant")
 	protected String libelle;
 	@Column(name = "description", nullable = false, length = 500)
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Description manquante")
 	protected String description;
 	@NotEmpty(message = "aucune chance de drop?")
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "drop_chance")
 	protected double dropChance;
 
