@@ -3,7 +3,6 @@ package sufod.entity;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -51,6 +50,8 @@ public abstract class Vivant {
 	protected int defMagique;
 	protected int defPhysique;
 	protected int defDistance;
+	
+
 	
 	//@ManyToMany
 	//@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
@@ -122,8 +123,7 @@ public abstract class Vivant {
 		this.defMagique = defMagique;
 		this.defPhysique = defPhysique;
 		this.defDistance = defDistance;
-		
-		this.attaques = attaques;
+
 	}
 	
 	/*----------- Getters & Setters -----------*/
@@ -316,15 +316,6 @@ public abstract class Vivant {
 		this.defDistance = defDistance;
 	}
 
-
-	public List<Attaque> getAttaques() {
-		return attaques;
-	}
-
-
-	public void setAttaques(List<Attaque> attaques) {
-		this.attaques = attaques;
-	}
 
 	
 	@Override
