@@ -2,14 +2,15 @@ package sufod.config;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -22,15 +23,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = {"sufod.services"})
 @EnableJpaRepositories(basePackages = "sufod.repository")
 public class AppConfig {
-
+	
+	@Autowired
+	private Environment env;
 	// DataSource=>base de donnees
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/Sufod");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgre");
+		dataSource.setDriverClassName(env.getProperty("datasource.driver"));
+		dataSource.setUrl(env.getProperty("datasource.url"));
+		dataSource.setUsername(env.getProperty("datasource.username"));
+		dataSource.setPassword(env.getProperty("datasource.password"));
+		//dataSource.setPassword("");
 		return dataSource;
 	}
 

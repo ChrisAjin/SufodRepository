@@ -15,11 +15,7 @@ public class MonstreService {
 	
 	@Autowired
 	private MonstreRepository monstreRepository;
-	@Autowired
-	private AttaqueRepository attaqueRepository;
-	@Autowired
-	private AttaqueService attaqueService;
-	
+
 	public List<Monstre> getAll(){
 		return monstreRepository.findAll();
 	}
@@ -30,17 +26,11 @@ public class MonstreService {
 	}
 	/*----------- Create -----------*/
 	public void create(Monstre monstre) {
-		if (monstre.getNom() == null || monstre.getNom().isEmpty()) {
-			throw new MonstreException();
-		}
 		monstreRepository.save(monstre);
 	}
 	/*----------- Update -----------*/
 	public Monstre update(Monstre monstre) {
-		Monstre monstreEnBase = getById(monstre.getId());
-		monstreEnBase.setNom(monstre.getNom());
-		monstreEnBase.setAttaques(monstre.getAttaques());
-		return monstreRepository.save(monstreEnBase);
+		return monstreRepository.save(monstre);
 	}
 	/*----------- delete -----------*/
 	public void delete(Monstre monstre) {

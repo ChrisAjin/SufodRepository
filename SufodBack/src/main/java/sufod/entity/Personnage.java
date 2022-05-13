@@ -1,16 +1,18 @@
 package sufod.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 @Entity
-@Table(name = "personnage")
+@SequenceGenerator(sequenceName = "seqPersonnage",name = "seqPersonnageJPA")
 public class Personnage extends Vivant{
 	
 	/*----------- Attributs -----------*/
-
 	private int idCompte;
 	
 	protected int pc;
@@ -25,9 +27,14 @@ public class Personnage extends Vivant{
 	protected int equipPied;
 	protected int equipJambe;
 	protected int equipBras;
-	
 	private int xp;
-
+	
+	@ManyToOne
+	private Joueur joueur;
+	@ManyToOne
+	private Admin admin;
+	@OneToMany(mappedBy="personnage")
+	private List<Attaque> attaque;
 	
 	/*----------- Constrictors -----------*/	
 	

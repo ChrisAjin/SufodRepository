@@ -1,7 +1,6 @@
 package sufod.entity;
 
-import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -17,19 +16,23 @@ public class Monstre extends Vivant{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
-	
+	@OneToMany(mappedBy="monstre")
+	private List<Attaque> attaque;
 	private int Drop;
-	
-	@OneToMany(mappedBy="key.monstre")
-	private Set<Move> moveSet;
-	
-	
-	
-	
 	/*----------- Constrictors -----------*/	
 	
 	public Monstre(){
 	}
+	public Monstre(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
+			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
+			int defPhysique, int defDistance) {
+		
+		super(id, nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
+				attDistance, defMagique, defPhysique, defDistance);
+
+	}
+	
+
 
 
 	/*----------- Getters & Setters -----------*/
@@ -44,15 +47,7 @@ public class Monstre extends Vivant{
 	}
 
 
-	public Set<Move> getMoveSet() {
-		return moveSet;
-	}
 
-
-	public void setMoveSet(Set<Move> moveSet) {
-		this.moveSet = moveSet;
-	}
-	
 	
 
 }
