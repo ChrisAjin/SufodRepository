@@ -3,7 +3,7 @@ package sufod.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,14 +16,14 @@ public class Monstre extends Vivant{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
-	@OneToMany(mappedBy="monstre")
+	@ManyToMany
 	private List<Attaque> attaque;
 	private int Drop;
 	/*----------- Constrictors -----------*/	
 	
 	public Monstre(){
 	}
-	public Monstre(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
+	public Monstre(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
 			int defPhysique, int defDistance) {
 		

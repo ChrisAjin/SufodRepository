@@ -42,13 +42,13 @@ public class AttaqueRestController {
 	
 	@GetMapping("personnage/{id}")
 	@JsonView(JsonViews.AttaquesWithPersonnage.class)
-	public List<Attaque> getAttaquesPersonnage() {
-		return personnageService.getAttaquesByPersonnageId();
+	public List<Attaque> getAttaquesPersonnage(Long id) {
+		return attaqueService.getAttaquesByPersonnageId(id);
 	}
 	
 	@GetMapping("monstre/{id}")
 	@JsonView(JsonViews.AttaquesWithMonstre.class)
-	public List<Attaque> getAttaquesMonstre() {
-		return monstreService.getAttaquesByMonstreId();
+	public List<Attaque> getAttaquesMonstre(Long id) {
+		return attaqueService.getAttaquesByMonstreId(id);
 	}
 }

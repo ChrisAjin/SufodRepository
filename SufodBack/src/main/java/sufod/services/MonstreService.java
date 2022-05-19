@@ -38,7 +38,7 @@ public class MonstreService {
 		
 	}
 	/*----------- deleteByID -----------*/
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		Monstre monstre = new Monstre();
 		monstre.setId(id);
 		delete(monstre);

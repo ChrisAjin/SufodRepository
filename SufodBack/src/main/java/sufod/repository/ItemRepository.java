@@ -14,15 +14,20 @@ import sufod.entity.Joueur;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-	List<Item> findByNom(String nom);
+	@Query("Select i from Item i where i.libelle=:libelle")
+	List<Item> findByNom(@Param("libelle") String libelle);
 
+	@Query("Select i from Item i where contains(i.libelle, libelle)")
 	List<Item> findByNomContaining(String nom);
 
-	List<Item> findByJoueur(Joueur id);
+	@Query("Select i from Item i left fetch join i.personnage where i.id=:id")
+	List<Item> findItemsByPersonnageId(Long id);
 
-	List<Equipement> findEquipementsByJoueur(Joueur id);
+	@Query("Select e from Equipement e left fetch join e.personnage where e.id=:id")
+	List<Equipement> findEquipementsByPersonnageId(Long id);
 
-	List<Ingredient> findIngredientsByJoueur(Joueur id);
+	@Query("Select i from Ingredient i left fetch join i.personnage where i.id=:id")
+	List<Ingredient> findIngredientsByPersonnageId(Long id);
 
 	@Query("Select e from Equipement e")
 	List<Equipement> findAllEquipements();

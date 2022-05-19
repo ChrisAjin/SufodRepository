@@ -21,8 +21,11 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque {
-	@ManyToOne
-	private Monstre monstre;
+	@ManyToMany
+	@JoinTable(name = "monstres", 
+	joinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "monstre_attaque_id_fk")), 
+	inverseJoinColumns = @JoinColumn(name = "monstre_id", foreignKey = @ForeignKey(name = "monstre_monstre_id_fk")))
+	Set<Monstre> monstres;
 	@ManyToMany
 	@JoinTable(name = "personnages", 
 	joinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
@@ -37,7 +40,7 @@ public class Attaque {
 	private TypeAtt type;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
-	private Integer id;
+	private Long id;
 
 	public Attaque() {
 
@@ -52,7 +55,7 @@ public class Attaque {
 		this.coupcritique = coupcritique;
 	}
 
-	public Attaque(Integer id, String nom, int degats, int paBase, int precision, TypeAtt type,int coupcritique) {
+	public Attaque(Long id, String nom, int degats, int paBase, int precision, TypeAtt type,int coupcritique) {
 		this.id = id;
 		this.nom = nom;
 		this.degats = degats;
@@ -102,11 +105,11 @@ public class Attaque {
 		this.type = type;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

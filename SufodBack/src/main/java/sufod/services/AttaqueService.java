@@ -18,8 +18,17 @@ public class AttaqueService {
 		return attaqueRepository.findAll();
 	}
 	
+	
+	public List<Attaque> getAttaquesByPersonnageId(Long id){
+		return attaqueRepository.findAttaquesByPersonnageId(id);
+	}
+	
+	public List<Attaque> getAttaquesByMonstreId(Long id){
+		return attaqueRepository.findAttaquesByMonstreId(id);
+	}
+	
 	/*----------- findByID -----------*/
-	public Attaque getById(Integer id) {
+	public Attaque getById(Long id) {
 		return attaqueRepository.findById(id).orElseThrow(AttaqueException::new);
 	}
 	/*----------- Create -----------*/
@@ -42,7 +51,7 @@ public class AttaqueService {
 		
 	}
 	/*----------- deleteByID -----------*/
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		Attaque attaque = new Attaque();
 		attaque.setId(id);
 		delete(attaque);

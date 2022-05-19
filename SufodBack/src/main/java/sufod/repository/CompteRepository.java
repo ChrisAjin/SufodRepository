@@ -16,13 +16,13 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	@Query("Select c from Compte c where c.login=:login and c.password=:password")
 	Optional<Compte> seConnecter(@Param("login") String login,@Param("password") String password);
 
-@Query("Select s from Admin s")
+	@Query("Select s from Admin s")
 	List<Admin> findAllAdmins();
 	
 	@Query("Select f from Joueur f")
 	List<Joueur> findAllJoueurs();
 	
-	@Query("Select c form Compte c where c.id=:id")
+	@Query("Select c form Compte c left join fetch c.personnage where c.id=:id")
 	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
 	
 }
