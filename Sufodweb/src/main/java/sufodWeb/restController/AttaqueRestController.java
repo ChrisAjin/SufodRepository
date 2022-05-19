@@ -14,18 +14,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sufod.entity.Attaque;
 import sufod.entity.JsonViews;
 import sufod.services.AttaqueService;
-import sufod.services.MonstreService;
-import sufod.services.PersonnageService;
+
 
 @RestController
 @RequestMapping("/api/attaque")
 public class AttaqueRestController {
 	@Autowired
 	private AttaqueService attaqueService ;
-	@Autowired
-	private PersonnageService personnageService ;
-	@Autowired
-	private MonstreService monstreService ;
 	
 	
 	@JsonView(JsonViews.Common.class)

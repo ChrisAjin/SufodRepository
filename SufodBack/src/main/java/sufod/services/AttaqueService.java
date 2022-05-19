@@ -3,11 +3,13 @@ package sufod.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import sufod.entity.Attaque;
 import sufod.exception.AttaqueException;
 import sufod.repository.AttaqueRepository;
 
+@Service
 public class AttaqueService {
 	
 	@Autowired

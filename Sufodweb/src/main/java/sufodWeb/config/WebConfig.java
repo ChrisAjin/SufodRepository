@@ -13,7 +13,7 @@ import sufod.config.AppConfig;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"formationSpringMvc.controller","formationSpringMvc.restController"})
+@ComponentScan(basePackages = {"sufodWeb.restController"})
 @Import(AppConfig.class)
 public class WebConfig {
 	

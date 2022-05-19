@@ -1,16 +1,22 @@
 package sufod.entity;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -33,6 +39,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 		@Type(value = Ingredient.class, name = "ingredient") })
 
 public abstract class Item {
+	
+	@ManyToMany(mappedBy = "items")
+	List<Personnage> personnages;
 	@JsonView({ JsonViews.Common.class })
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seqItemSufod")
 	@Id
@@ -93,6 +102,15 @@ public abstract class Item {
 
 	public void setDropChance(double dropChance) {
 		this.dropChance = dropChance;
+	}
+	
+
+	public List<Personnage> getPersonnages() {
+		return personnages;
+	}
+
+	public void setPersonnages(List<Personnage> personnages) {
+		this.personnages = personnages;
 	}
 
 	@Override

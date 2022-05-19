@@ -6,6 +6,9 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,7 +19,6 @@ import javax.persistence.SequenceGenerator;
 public class Personnage extends Vivant {
 
 	/*----------- Attributs -----------*/
-	private int idCompte;
 
 	protected int pc;
 	@Enumerated(EnumType.ORDINAL)
@@ -34,13 +36,19 @@ public class Personnage extends Vivant {
 
 //	@JsonView(JsonView.PersonnageWithEquipement.class)
 	@ManyToOne
-	private Joueur joueur;
-	@ManyToOne
-	private Admin admin;
-	@OneToMany(mappedBy = "personnage")
-	private List<Attaque> attaque;
+	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "personnage_compte_id_fk"))
+	private Compte compte;
+	
 	@ManyToMany
-	Set<Equipement> equipement;
+	@JoinTable(name = "personnage_attaque_test", 
+	joinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
+	inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "attaque_attaque_id_fk")))
+	Set<Attaque> attaques;
+	@ManyToMany
+	@JoinTable(name = "personnage_item_test", 
+	joinColumns = @JoinColumn(name = "personnage_id"), 
+	inverseJoinColumns = @JoinColumn(name = "item_id"))
+	Set<Item> items;
 
 	/*----------- Constrictors -----------*/
 
@@ -50,12 +58,11 @@ public class Personnage extends Vivant {
 
 	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, int pc, Metier metier, int idCompte) {
+			int defPhysique, int defDistance, int pc, Metier metier) {
 
 		super(id, nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 
-		this.idCompte = idCompte;
 		this.pc = pc;
 
 		this.metier = metier;
@@ -63,12 +70,11 @@ public class Personnage extends Vivant {
 
 	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax, int esquive, int vitesse,
 			int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique, int defPhysique,
-			int defDistance, int pc, Metier metier, int idCompte) {
+			int defDistance, int pc, Metier metier) {
 
 		super(nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 
-		this.idCompte = idCompte;
 		this.pc = pc;
 
 		this.metier = metier;
@@ -80,13 +86,6 @@ public class Personnage extends Vivant {
 		return pc;
 	}
 
-	public int getIdCompte() {
-		return idCompte;
-	}
-
-	public void setIdCompte(int idCompte) {
-		this.idCompte = idCompte;
-	}
 
 	public void setPc(int pc) {
 		this.pc = pc;

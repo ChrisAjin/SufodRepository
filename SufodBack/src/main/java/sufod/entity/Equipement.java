@@ -17,11 +17,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @DiscriminatorValue("e")
 public class Equipement extends Item {
 
-	@ManyToMany
-	@JoinTable(name = "personnages", 
-	joinColumns = @JoinColumn(name = "equipement_id", foreignKey = @ForeignKey(name = "personnage_equipement_id_fk")), 
-	inverseJoinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_personnage_id_fk")))
-	Set<Personnage> personnages;
+	
 	@Column(name = "pv", nullable = false)
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "PV manquant")

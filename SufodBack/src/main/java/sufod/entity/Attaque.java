@@ -21,15 +21,9 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque {
-	@ManyToMany
-	@JoinTable(name = "monstres", 
-	joinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "monstre_attaque_id_fk")), 
-	inverseJoinColumns = @JoinColumn(name = "monstre_id", foreignKey = @ForeignKey(name = "monstre_monstre_id_fk")))
+	@ManyToMany	 (mappedBy = "attaques")
 	Set<Monstre> monstres;
-	@ManyToMany
-	@JoinTable(name = "personnages", 
-	joinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
-	inverseJoinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_personnage_id_fk")))
+	@ManyToMany (mappedBy = "attaques")	
 	Set<Personnage> personnages;
 	private String nom;
 	private int degats;

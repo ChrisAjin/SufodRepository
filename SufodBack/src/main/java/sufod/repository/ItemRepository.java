@@ -17,31 +17,27 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	@Query("Select i from Item i where i.libelle=:libelle")
 	List<Item> findByNom(@Param("libelle") String libelle);
 
-	@Query("Select i from Item i where contains(i.libelle, libelle)")
-	List<Item> findByNomContaining(String nom);
-
-	@Query("Select i from Item i left fetch join i.personnage where i.id=:id")
+		@Query("Select i from Item i left join fetch i.personnages where i.id=:id")
 	List<Item> findItemsByPersonnageId(Long id);
 
-	@Query("Select e from Equipement e left fetch join e.personnage where e.id=:id")
+	@Query("Select e from Equipement e left join fetch  e.personnages where e.id=:id")
 	List<Equipement> findEquipementsByPersonnageId(Long id);
 
-	@Query("Select i from Ingredient i left fetch join i.personnage where i.id=:id")
+	@Query("Select i from Ingredient i left join fetch  i.personnages where i.id=:id")
 	List<Ingredient> findIngredientsByPersonnageId(Long id);
 
 	@Query("Select e from Equipement e")
 	List<Equipement> findAllEquipements();
 
-	@Query("Select i from Ingredients i")
+	@Query("Select i from Ingredient i")
 	List<Ingredient> findAllIngredients();
 
-	@Query("select i from Item i left join fetch i.ingredients")
-	Optional<Item> findIngredientsById(@Param("id") Long id);
+	@Query("select i from Item i where i.id=:id")
+	Optional<Item> findItemsById(@Param("id") Long id);
 
-	@Query("select i from Item i left join fetch i.equipements")
-	Optional<Item> findEquipementsById(@Param("id") Long id);
 	
-	@Query("select e from Equipement e where e.bodypart=:bodypart")
-	List<Equipement> findByBodyPart(@Param("bodypart") String bodypart);
+	
+	@Query("select e from Equipement e where e.localisation=:localisation")
+	List<Equipement> findByBodyPart(@Param("localisation") String localisation);
 
 }

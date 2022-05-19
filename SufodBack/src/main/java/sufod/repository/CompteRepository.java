@@ -13,8 +13,8 @@ import sufod.entity.Joueur;
 
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
-	@Query("Select c from Compte c where c.login=:login and c.password=:password")
-	Optional<Compte> seConnecter(@Param("login") String login,@Param("password") String password);
+	@Query("Select c from Compte c where c.pseudo=:pseudo and c.password=:password")
+	Optional<Compte> seConnecter(@Param("pseudo") String pseudo,@Param("password") String password);
 
 	@Query("Select s from Admin s")
 	List<Admin> findAllAdmins();
@@ -22,7 +22,7 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	@Query("Select f from Joueur f")
 	List<Joueur> findAllJoueurs();
 	
-	@Query("Select c form Compte c left join fetch c.personnage where c.id=:id")
+	@Query("Select c from Compte c left join fetch c.personnages where c.id=:id")
 	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
 	
 }

@@ -1,6 +1,7 @@
 package sufod.entity;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -59,6 +61,9 @@ public abstract class Compte {
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty
 	protected String mail;
+	
+	@OneToMany(mappedBy = "compte")
+	private Set<Personnage> personnages;
 	
 
 /*----------- Constructors -----------*/
@@ -133,6 +138,14 @@ public abstract class Compte {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public Set<Personnage> getPersonnages(){
+		return personnages;
+	}
+	
+	public void setPersonnage(Set<Personnage> personnages) {
+		this.personnages = personnages;
 	}
 
 

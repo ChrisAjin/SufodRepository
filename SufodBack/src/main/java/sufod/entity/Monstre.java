@@ -3,6 +3,9 @@ package sufod.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,7 +20,10 @@ public class Monstre extends Vivant{
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
 	@ManyToMany
-	private List<Attaque> attaque;
+	@JoinTable(name = "monstre_attaque", 
+	joinColumns = @JoinColumn(name = "monstre_id"), 
+	inverseJoinColumns = @JoinColumn(name = "attaque_id"))
+	private List<Attaque> attaques;
 	private int Drop;
 	/*----------- Constrictors -----------*/	
 	

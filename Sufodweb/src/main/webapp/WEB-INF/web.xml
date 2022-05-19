@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
-	<display-name>formationSpringMvc</display-name>
+	<display-name>sufodWeb</display-name>
 
 	<!-- configuration de la servlet de spring -->
 	<!-- conf de la partie java (class) -->
@@ -16,7 +16,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>formationSpringMvc.config.WebConfig</param-value>
+			<param-value>sufodWeb.config.WebConfig</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

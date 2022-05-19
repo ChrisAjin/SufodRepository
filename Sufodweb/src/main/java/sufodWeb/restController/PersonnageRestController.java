@@ -38,7 +38,7 @@ public class PersonnageRestController {
 	@GetMapping("compte/{id}")
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
 	public List<Personnage> getPersonnageByJoueurId(@PathVariable Long id) {
-		return personnageService.getAllPersonnageByJoueurId(id);
+		return personnageService.getAllPersonnageByCompteId(id);
 	}
 	
 	@GetMapping("attaque/{id}")
@@ -50,7 +50,7 @@ public class PersonnageRestController {
 	@GetMapping("equipement/{id}")
 	@JsonView(JsonViews.PersonnagesWithEquipement.class)
 	public List<Personnage> getPersonnageByEquipementId(@PathVariable Long id) {
-		return personnageService.getAllPersonnageByEquipementId(id);
+		return personnageService.getAllPersonnageByItemId(id);
 	}
 	
 	

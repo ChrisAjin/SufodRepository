@@ -11,8 +11,7 @@ import javax.persistence.OneToMany;
 public class Joueur extends Compte{
 
 	
-	@OneToMany(mappedBy = "joueur")
-	private Set<Personnage> personnages;
+	
 	
 	public Joueur() {
 		super();
@@ -21,13 +20,7 @@ public class Joueur extends Compte{
 	public Joueur(String pseudo, String prenom, String nom, String password, String mail) {
 		super(pseudo, prenom, nom, password, mail);
 	}
-	public Set<Personnage> getPersonnages(){
-		return personnages;
-	}
-	
-	public void setPersonnage(Set<Personnage> personnages) {
-		this.personnages = personnages;
-	}
+
 	
 
 }

@@ -10,9 +10,6 @@ import sufod.entity.Monstre;
 
 public interface MonstreRepository extends JpaRepository<Monstre, Integer>{
 	
-	@Modifying
-	@Transactional
-	@Query("update Monstre m set m.attaque=null where m.attaque=:attaque")
-	void deleteByMaitre(@Param("attaque") Monstre attaque);
+	
 
 }

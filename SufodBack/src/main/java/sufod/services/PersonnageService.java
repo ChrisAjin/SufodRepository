@@ -20,7 +20,7 @@ public class PersonnageService {
 	}
 	
 	
-	public List<Personnage> getAllPersonnageByJoueurId(Long id) {
+	public List<Personnage> getAllPersonnageByCompteId(Long id) {
 		return personnageRepository.findPersonnagesByIdCompte(id);
 	}
 	
@@ -28,8 +28,8 @@ public class PersonnageService {
 		return personnageRepository.findPersonnagesByIdAttaque(id);
 	}
 	
-	public List<Personnage> getAllPersonnageByEquipementId(Long id) {
-		return personnageRepository.findPersonnagesByIdEquipement(id);
+	public List<Personnage> getAllPersonnageByItemId(Long id) {
+		return personnageRepository.findPersonnagesByIdItems(id);
 	}
 	
 	
