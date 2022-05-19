@@ -34,11 +34,17 @@ public class JsonViews {
 	public static class PersonnagesWithCompte extends Common {
 
 	}
+	
 	public static class PersonnagesWithAttaque extends Common {
 
 	}
+
 	
-	public static class PersonnagesWithEquipement extends Common {
+	public static class PersonnageWithItem extends Common {
+
+	}
+	
+	public static class MonstresWithAttaque extends Common {
 
 	}
 }

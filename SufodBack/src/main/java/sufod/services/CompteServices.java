@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import sufod.entity.Admin;
 import sufod.entity.Compte;
 import sufod.entity.Joueur;
+import sufod.exception.CompteException;
 import sufod.repository.CompteRepository;
 
 @Service
@@ -26,7 +27,7 @@ public class CompteServices {
 	}
 	
 	public Compte getCompteByPersonnageId(Long id) {
-		return compteRepository.findCompteByPersonnageId(id).orElseThrow(RuntimeException::new);
+		return compteRepository.findCompteByPersonnageId(id).orElseThrow(CompteException::new);
 	}
 
 	public List<Joueur> getAllJoueurs() {
@@ -34,11 +35,11 @@ public class CompteServices {
 	}
 
 	public Compte getById(Long id) {
-		return compteRepository.findById(id).orElseThrow(RuntimeException::new);
+		return compteRepository.findById(id).orElseThrow(CompteException::new);
 	}
 
 	public Compte seConnecter(String login, String password) {
-		return compteRepository.seConnecter(login, password).orElseThrow(RuntimeException::new);
+		return compteRepository.seConnecter(login, password).orElseThrow(CompteException::new);
 	}
 
 	public Compte create(Compte compte) {

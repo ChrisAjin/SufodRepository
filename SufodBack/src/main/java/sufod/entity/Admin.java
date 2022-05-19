@@ -12,9 +12,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @DiscriminatorValue("admin")
 public class Admin extends Compte {
-	@JsonView(JsonViews.AdminWithPersonnages.class)
-	@OneToMany(mappedBy = "admin")
-	private Set<Personnage> personnages;
+	
+	
 	
 	public Admin() {
 		super();
@@ -23,11 +22,5 @@ public class Admin extends Compte {
 	public Admin(String pseudo, String prenom, String nom, String password, String mail) {
 		super(pseudo, prenom, nom, password, mail);
 	}
-	public Set<Personnage> getPersonnages(){
-		return personnages;
-	}
 	
-	public void setPersonnage(Set<Personnage> personnages) {
-		this.personnages = personnages;
-	}
 }

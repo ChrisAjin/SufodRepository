@@ -23,8 +23,9 @@ public class PersonnageRestController {
 	@Autowired
 	private PersonnageService personnageService;
 
-	@GetMapping("/all")
+	
 	@JsonView(JsonViews.Common.class)
+	@GetMapping("")
 	public List<Personnage> getAll() {
 		return personnageService.getAll();
 	}
@@ -32,23 +33,23 @@ public class PersonnageRestController {
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Personnage getById(@PathVariable Long id) {
-		return (Personnage) personnageService.getById(id);
+		return personnageService.getById(id);
 	}
 	
-	@GetMapping("compte/{id}")
+	@GetMapping("/compte/{id}")
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
-	public List<Personnage> getPersonnageByJoueurId(@PathVariable Long id) {
+	public List<Personnage> getPersonnageByCompteId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByCompteId(id);
 	}
 	
-	@GetMapping("attaque/{id}")
+	@GetMapping("/attaque/{id}")
 	@JsonView(JsonViews.PersonnagesWithAttaque.class)
 	public List<Personnage> getPersonnageByAttaqueId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByAttaqueId(id);
 	}
 	
-	@GetMapping("equipement/{id}")
-	@JsonView(JsonViews.PersonnagesWithEquipement.class)
+	@GetMapping("/equipement/{id}")
+	@JsonView(JsonViews.PersonnageWithEquipement.class)
 	public List<Personnage> getPersonnageByEquipementId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByItemId(id);
 	}

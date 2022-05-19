@@ -124,7 +124,6 @@ public class AppSpring {
 	
 	//p1.setEquipTete(e3);
 	
-	personnageService.create(p1);
 	
 	
 	Monstre m1 = new Monstre();
@@ -203,7 +202,11 @@ public class AppSpring {
 		setPer.add(p1);
 		j1.setPersonnage(setPer);
 		
+		p1.setCompte(j1);
+		
 		compteServices.create(j1);
+		personnageService.create(p1);
+		
 	
 	}
 	

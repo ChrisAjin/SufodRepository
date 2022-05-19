@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 
 @MappedSuperclass
@@ -19,34 +21,64 @@ public abstract class Vivant {
 	
 	/*----------- Attributs -----------*/
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 	@SequenceGenerator(name = "seq", sequenceName = "seq_vivant", initialValue = 1, allocationSize = 1)
 	protected Long id;
+	
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
+	
+	@JsonView(JsonViews.Common.class)
 	protected String description;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int niveau;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	protected Classe classe;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int pvMax;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int pv;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int esquive;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int vitesse;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int pa;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int paMax;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int pm;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int pmMax;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int attMagique;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int attPhysique;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int attDistance;
 	
+	@JsonView(JsonViews.Common.class)
 	protected int defMagique;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int defPhysique;
+	
+	@JsonView(JsonViews.Common.class)
 	protected int defDistance;
 	
 

@@ -46,22 +46,28 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAccountJPA")
 	protected Long id;
+	
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "pas de pseudo:merci de mettre un pseudo")
 	@Size(min = 2)
 	protected String pseudo;
+	
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty
 	protected String prenom;
+	
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty
 	protected String nom;
+	
 	@NotEmpty
 	protected String password;
+	
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty
 	protected String mail;
 	
+	@JsonView(JsonViews.CompteWithPersonnage.class)
 	@OneToMany(mappedBy = "compte")
 	private Set<Personnage> personnages;
 	

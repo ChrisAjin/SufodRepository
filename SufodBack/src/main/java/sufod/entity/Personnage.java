@@ -1,6 +1,5 @@
 package sufod.entity;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,43 +11,68 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sufod.entity.JsonViews.PersonnagesWithAttaque;
 
 @Entity
 @SequenceGenerator(sequenceName = "seqPersonnage", name = "seqPersonnageJPA")
 public class Personnage extends Vivant {
 
 	/*----------- Attributs -----------*/
-
+	@JsonView(JsonViews.Common.class)
 	protected int pc;
+	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	protected Metier metier;
-
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipTete;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipPlastron;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipCou;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipMain;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipPoignet;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipPied;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipJambe;
+	
+	@JsonView(JsonViews.Common.class)
 	protected Long equipBras;
+	
+	@JsonView(JsonViews.Common.class)
 	private int xp;
 
-//	@JsonView(JsonView.PersonnageWithEquipement.class)
+	@JsonView(JsonViews.PersonnagesWithCompte.class)
 	@ManyToOne
 	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "personnage_compte_id_fk"))
 	private Compte compte;
 	
+	@JsonView(JsonViews.PersonnagesWithAttaque.class)
 	@ManyToMany
 	@JoinTable(name = "personnage_attaque", 
 	joinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
 	inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "attaque_attaque_id_fk")))
 	Set<Attaque> attaques;
+	
 	@ManyToMany
 	@JoinTable(name = "personnage_item", 
 	joinColumns = @JoinColumn(name = "personnage_id"), 
 	inverseJoinColumns = @JoinColumn(name = "item_id"))
+	@JsonView(JsonViews.PersonnageWithItem.class)
 	Set<Item> items;
 
 	/*----------- Constrictors -----------*/

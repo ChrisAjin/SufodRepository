@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(name="monstre")
@@ -23,7 +25,10 @@ public class Monstre extends Vivant{
 	@JoinTable(name = "monstre_attaque", 
 	joinColumns = @JoinColumn(name = "monstre_id"), 
 	inverseJoinColumns = @JoinColumn(name = "attaque_id"))
+	@JsonView(JsonViews.MonstresWithAttaque.class)
 	private List<Attaque> attaques;
+	
+	@JsonView(JsonViews.Common.class)
 	private int Drop;
 	/*----------- Constrictors -----------*/	
 	
