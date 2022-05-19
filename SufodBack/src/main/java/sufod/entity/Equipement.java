@@ -18,39 +18,36 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Equipement extends Item {
 
 	
-	@Column(name = "pv", nullable = false)
+	@Column(name = "pv")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "PV manquant")
 	private int pv;
-	@Column(name = "def_magique", nullable = false)
+	@Column(name = "def_magique")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Défense Magique manquante")
+	
 	private double defMagique;
-	@Column(name = "def_physique", nullable = false)
+	@Column(name = "def_physique")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Défense Physique manquante")
+	
 	private double defPhysique;
-	@Column(name = "def_distance", nullable = false)
+	@Column(name = "def_distance")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Défense Distance manquante")
+	
 	private double defDistance;
-	@Column(name = "attaque_magique", nullable = false)
+	@Column(name = "attaque_magique")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Attaque Magique manquante")
+	
 	private double attMagique;
-	@Column(name = "attaque_physique", nullable = false)
+	@Column(name = "attaque_physique")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Attaque Physique manquante")
+	
 	private double attPhysique;
-	@Column(name = "attaque_distance", nullable = false)
+	@Column(name = "attaque_distance")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Attaque Distance manquante")
 	private double attDistance;
-	@Column(name = "esquive", nullable = false)
+	@Column(name = "esquive")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Esquive manquante")
 	private double Esquive;
-	@Column(name = "localisation", nullable = false)
+	@Column(name = "localisation")
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Localisation manquante")
 	PartieCorps localisation;

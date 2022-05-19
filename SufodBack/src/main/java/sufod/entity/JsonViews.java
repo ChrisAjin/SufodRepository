@@ -18,7 +18,7 @@ public class JsonViews {
 
 	}
 
-	public static class CompteWithPersonnages extends Common {
+	public static class CompteWithPersonnage extends Common {
 
 	}
 
@@ -30,10 +30,7 @@ public class JsonViews {
 
 	}
 	
-	public static class CompteWithPersonnage extends Common {
-
-	}
-	
+		
 	public static class PersonnagesWithCompte extends Common {
 
 	}

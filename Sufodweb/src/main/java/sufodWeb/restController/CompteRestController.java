@@ -36,7 +36,7 @@ public class CompteRestController {
 		return compteServices.create(compte);
 	}
 	
-	@GetMapping("personnage/{id}")
+	@GetMapping("/{id}/personnage")
 	@JsonView(JsonViews.CompteWithPersonnage.class)
 	public Compte getCompte(Long id) {
 		return compteServices.getCompteByPersonnageId(id);

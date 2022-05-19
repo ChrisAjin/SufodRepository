@@ -1,6 +1,7 @@
 package sufod.entity;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -24,14 +25,14 @@ public class Personnage extends Vivant {
 	@Enumerated(EnumType.ORDINAL)
 	protected Metier metier;
 
-	protected int equipTete;
-	protected int equipPlastron;
-	protected int equipCou;
-	protected int equipMain;
-	protected int equipPoignet;
-	protected int equipPied;
-	protected int equipJambe;
-	protected int equipBras;
+	protected Long equipTete;
+	protected Long equipPlastron;
+	protected Long equipCou;
+	protected Long equipMain;
+	protected Long equipPoignet;
+	protected Long equipPied;
+	protected Long equipJambe;
+	protected Long equipBras;
 	private int xp;
 
 //	@JsonView(JsonView.PersonnageWithEquipement.class)
@@ -40,12 +41,12 @@ public class Personnage extends Vivant {
 	private Compte compte;
 	
 	@ManyToMany
-	@JoinTable(name = "personnage_attaque_test", 
+	@JoinTable(name = "personnage_attaque", 
 	joinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
 	inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "attaque_attaque_id_fk")))
 	Set<Attaque> attaques;
 	@ManyToMany
-	@JoinTable(name = "personnage_item_test", 
+	@JoinTable(name = "personnage_item", 
 	joinColumns = @JoinColumn(name = "personnage_id"), 
 	inverseJoinColumns = @JoinColumn(name = "item_id"))
 	Set<Item> items;
@@ -99,67 +100,67 @@ public class Personnage extends Vivant {
 		this.metier = metier;
 	}
 
-	public int getEquipTete() {
+	public Long getEquipTete() {
 		return equipTete;
 	}
 
-	public void setEquipTete(int equipTete) {
+	public void setEquipTete(Long equipTete) {
 		this.equipTete = equipTete;
 	}
 
-	public int getEquipPlastron() {
+	public Long getEquipPlastron() {
 		return equipPlastron;
 	}
 
-	public void setEquipPlastron(int equipPlastron) {
+	public void setEquipPlastron(Long equipPlastron) {
 		this.equipPlastron = equipPlastron;
 	}
 
-	public int getEquipCou() {
+	public Long getEquipCou() {
 		return equipCou;
 	}
 
-	public void setEquipCou(int equipCou) {
+	public void setEquipCou(Long equipCou) {
 		this.equipCou = equipCou;
 	}
 
-	public int getEquipMain() {
+	public Long getEquipMain() {
 		return equipMain;
 	}
 
-	public void setEquipMain(int equipMain) {
+	public void setEquipMain(Long equipMain) {
 		this.equipMain = equipMain;
 	}
 
-	public int getEquipPoignet() {
+	public Long getEquipPoignet() {
 		return equipPoignet;
 	}
 
-	public void setEquipPoignet(int equipPoignet) {
+	public void setEquipPoignet(Long equipPoignet) {
 		this.equipPoignet = equipPoignet;
 	}
 
-	public int getEquipPied() {
+	public Long getEquipPied() {
 		return equipPied;
 	}
 
-	public void setEquipPied(int equipPied) {
+	public void setEquipPied(Long equipPied) {
 		this.equipPied = equipPied;
 	}
 
-	public int getEquipJambe() {
+	public Long getEquipJambe() {
 		return equipJambe;
 	}
 
-	public void setEquipJambe(int equipJambe) {
+	public void setEquipJambe(Long equipJambe) {
 		this.equipJambe = equipJambe;
 	}
 
-	public int getEquipBras() {
+	public Long getEquipBras() {
 		return equipBras;
 	}
 
-	public void setEquipBras(int equipBras) {
+	public void setEquipBras(Long equipBras) {
 		this.equipBras = equipBras;
 	}
 
@@ -170,5 +171,56 @@ public class Personnage extends Vivant {
 	public void setXp(int xp) {
 		this.xp = xp;
 	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	public Set<Attaque> getAttaques() {
+		return attaques;
+	}
+
+	public void setAttaques(Set<Attaque> attaques) {
+		this.attaques = attaques;
+	}
+
+	public Set<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Item> items) {
+		this.items = items;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(attaques, compte, equipBras, equipCou, equipJambe, equipMain, equipPied,
+				equipPlastron, equipPoignet, equipTete, items, metier, pc, xp);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Personnage other = (Personnage) obj;
+		return Objects.equals(attaques, other.attaques) && Objects.equals(compte, other.compte)
+				&& equipBras == other.equipBras && equipCou == other.equipCou && equipJambe == other.equipJambe
+				&& equipMain == other.equipMain && equipPied == other.equipPied && equipPlastron == other.equipPlastron
+				&& equipPoignet == other.equipPoignet && equipTete == other.equipTete
+				&& Objects.equals(items, other.items) && metier == other.metier && pc == other.pc && xp == other.xp;
+	}
+	
+	
 
 }

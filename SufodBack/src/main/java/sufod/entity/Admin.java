@@ -17,6 +17,7 @@ public class Admin extends Compte {
 	private Set<Personnage> personnages;
 	
 	public Admin() {
+		super();
 	}
 	
 	public Admin(String pseudo, String prenom, String nom, String password, String mail) {
