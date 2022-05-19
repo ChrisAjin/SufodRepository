@@ -21,13 +21,12 @@ import sufod.services.PersonnageService;
 @RequestMapping("/api/attaque")
 public class AttaqueRestController {
 	@Autowired
-	private AttaqueService attaqueService ;
+	private AttaqueService attaqueService;
 	@Autowired
-	private PersonnageService personnageService ;
+	private PersonnageService personnageService;
 	@Autowired
-	private MonstreService monstreService ;
-	
-	
+	private MonstreService monstreService;
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Attaque> getAll() {
@@ -39,13 +38,13 @@ public class AttaqueRestController {
 	public Attaque create(@RequestBody Attaque attaque) {
 		return attaqueService.create(attaque);
 	}
-	
+
 	@GetMapping("personnage/{id}")
 	@JsonView(JsonViews.AttaquesWithPersonnage.class)
 	public List<Attaque> getAttaquesPersonnage() {
 		return personnageService.getAttaquesByPersonnageId();
 	}
-	
+
 	@GetMapping("monstre/{id}")
 	@JsonView(JsonViews.AttaquesWithMonstre.class)
 	public List<Attaque> getAttaquesMonstre() {

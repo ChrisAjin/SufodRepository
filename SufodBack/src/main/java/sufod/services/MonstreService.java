@@ -12,33 +12,37 @@ import sufod.repository.MonstreRepository;
 
 @Service
 public class MonstreService {
-	
+
 	@Autowired
 	private MonstreRepository monstreRepository;
 
-	public List<Monstre> getAll(){
+	public List<Monstre> getAll() {
 		return monstreRepository.findAll();
 	}
-	
+
 	/*----------- findByID -----------*/
 	public Monstre getById(Integer id) {
 		return monstreRepository.findById(id).orElseThrow(MonstreException::new);
 	}
+
 	/*----------- Create -----------*/
 	public Monstre create(Monstre monstre) {
 		return monstreRepository.save(monstre);
 	}
+
 	/*----------- Update -----------*/
 	public Monstre update(Monstre monstre) {
 		return monstreRepository.save(monstre);
 	}
+
 	/*----------- delete -----------*/
 	public void delete(Monstre monstre) {
 		monstreRepository.delete(monstre);
-		
+
 	}
+
 	/*----------- deleteByID -----------*/
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		Monstre monstre = new Monstre();
 		monstre.setId(id);
 		delete(monstre);

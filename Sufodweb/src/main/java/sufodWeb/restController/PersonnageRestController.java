@@ -34,26 +34,25 @@ public class PersonnageRestController {
 	public Personnage getById(@PathVariable Long id) {
 		return (Personnage) personnageService.getById(id);
 	}
-	
+
 	@GetMapping("compte/{id}")
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
 	public List<Personnage> getPersonnageByJoueurId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByJoueurId(id);
 	}
-	
+
 	@GetMapping("attaque/{id}")
 	@JsonView(JsonViews.PersonnagesWithAttaque.class)
 	public List<Personnage> getPersonnageByAttaqueId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByAttaqueId(id);
 	}
-	
+
 	@GetMapping("equipement/{id}")
 	@JsonView(JsonViews.PersonnagesWithEquipement.class)
 	public List<Personnage> getPersonnageByEquipementId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByEquipementId(id);
 	}
-	
-	
+
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Personnage create(@RequestBody Personnage personnage) {

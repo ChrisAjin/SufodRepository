@@ -7,15 +7,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-<<<<<<< HEAD
-        <dependent-module archiveName="SufodBack-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SufodV2/SufodV2">
+        <dependent-module archiveName="SufodBack-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SufodBack/SufodBack">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-=======
                 
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                
->>>>>>> SufodWeb
         <property name="context-root" value="mvc"/>
                 
         <property name="java-output-path" value="/SufodWeb/target/classes"/>

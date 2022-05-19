@@ -15,15 +15,13 @@ import sufod.entity.Compte;
 import sufod.entity.JsonViews;
 import sufod.services.CompteServices;
 
-
-
 @RestController
 @RequestMapping("/api/compte")
 public class CompteRestController {
-	
+
 	@Autowired
-	private CompteServices compteServices ;
-	
+	private CompteServices compteServices;
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Compte> getAll() {
@@ -35,7 +33,7 @@ public class CompteRestController {
 	public Compte create(@RequestBody Compte compte) {
 		return compteServices.create(compte);
 	}
-	
+
 	@GetMapping("personnage/{id}")
 	@JsonView(JsonViews.CompteWithPersonnage.class)
 	public Compte getCompte(Long id) {
