@@ -18,32 +18,33 @@ import SufodRepository.SufodBoot.services.MonstreService;
 import SufodRepository.SufodBoot.entity.JsonViews;
 
 @RestController
-@RequestMapping("/api/monstres")
+@RequestMapping("/api/monstre")
 public class MonstreRestController {
 
 	@Autowired
-		private MonstreService monstreService  ;
-		
-		@JsonView(JsonViews.Common.class)
-		@GetMapping("")
-		public List<Monstre> getAll() {
-			return monstreService.getAll();
-		}
-		
-		//Ok
-		@GetMapping("/{id}")
-		@JsonView(JsonViews.Common.class)
-		public Monstre getById(@PathVariable Long id) {
-			return monstreService.getById(id);
-		}
-		
-		//Ok
-		@GetMapping("/attaque/{id}")
-		@JsonView(JsonViews.PersonnagesWithAttaque.class)
-		public List<Monstre> getMonstreByAttaqueId(@PathVariable Long id) {
-			return monstreService.getAllMonstreByAttaqueId(id);
-		}
+	private MonstreService monstreService;
 
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("")
+	public List<Monstre> getAll() {
+		return monstreService.getAll();
+	}
+
+	//Ok
+	@GetMapping("/{id}")
+	@JsonView(JsonViews.Common.class)
+	public Monstre getById(@PathVariable Long id) {
+		return monstreService.getById(id);
+	}
+
+	//Ok
+	@GetMapping("/attaque/{id}")
+	@JsonView(JsonViews.PersonnagesWithAttaque.class)
+	public List<Monstre> getMonstreByAttaqueId(@PathVariable Long id) {
+		return monstreService.getAllMonstreByAttaqueId(id);
+	}
+
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Monstre create(@RequestBody Monstre monstre) {

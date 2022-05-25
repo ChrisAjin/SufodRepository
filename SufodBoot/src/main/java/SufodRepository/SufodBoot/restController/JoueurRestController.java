@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import SufodRepository.SufodBoot.entity.Admin;
+import SufodRepository.SufodBoot.entity.Compte;
 import SufodRepository.SufodBoot.entity.Joueur;
 import SufodRepository.SufodBoot.entity.JsonViews;
 import SufodRepository.SufodBoot.services.CompteServices;
@@ -35,6 +37,15 @@ public class JoueurRestController {
 		@JsonView(JsonViews.Common.class)
 		public Joueur getById(@PathVariable Long id) {
 			return (Joueur) compteServices.getById(id);
+		}
+		
+		
+		
+		//Ok !!Bien mettre un mdp lors de la creation car pas visible (pas de jsonview)
+		@JsonView(JsonViews.Common.class)
+		@PostMapping("")
+		public Joueur create(@RequestBody Joueur joueur) {
+			return (Joueur) compteServices.create(joueur);
 		}
 
 	

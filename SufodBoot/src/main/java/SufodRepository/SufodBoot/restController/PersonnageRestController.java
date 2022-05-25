@@ -17,7 +17,7 @@ import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.services.PersonnageService;
 
 @RestController
-@RequestMapping("/api/vivants/personnage")
+@RequestMapping("/api/personnage")
 public class PersonnageRestController {
 
 	@Autowired
@@ -59,7 +59,7 @@ public class PersonnageRestController {
 		return personnageService.getAllPersonnageByItemId(id);
 	}
 	
-	//Pas tester
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Personnage create(@RequestBody Personnage personnage) {

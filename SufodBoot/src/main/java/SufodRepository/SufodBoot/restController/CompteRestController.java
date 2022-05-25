@@ -37,11 +37,7 @@ public class CompteRestController {
 		return (Compte) compteServices.getById(id);
 	}
 
-	@JsonView(JsonViews.Common.class)
-	@PostMapping("")
-	public Compte create(@RequestBody Compte compte) {
-		return compteServices.create(compte);
-	}
+	
 	
 	//OK
 	@GetMapping("/personnage/{id}")
