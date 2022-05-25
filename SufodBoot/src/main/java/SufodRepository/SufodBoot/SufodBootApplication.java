@@ -1,13 +1,13 @@
-package SufodRepository.Sufod;
+package SufodRepository.SufodBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjetSufodApplication {
+public class SufodBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjetSufodApplication.class, args);
+		SpringApplication.run(SufodBootApplication.class, args);
 	}
 
 }

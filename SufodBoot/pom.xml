@@ -9,14 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>SufodRepository</groupId>
-	<artifactId>Sufod</artifactId>
+	<artifactId>SufodBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProjetSufod</name>
+	<name>SufodBoot</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-	<dependencies>
+	
 		<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,7 +60,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
-	</dependencies>
+	
 
 	<build>
 		<plugins>
