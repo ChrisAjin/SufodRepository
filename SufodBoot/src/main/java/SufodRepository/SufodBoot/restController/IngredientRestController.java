@@ -21,12 +21,14 @@ public class IngredientRestController {
 	@Autowired
 	private ItemService itemService ;
 	
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Ingredient> getAll() {
 		return itemService.getAllIngredients();
 	}
 	
+	//Ok
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Ingredient getById(@PathVariable Long id) {

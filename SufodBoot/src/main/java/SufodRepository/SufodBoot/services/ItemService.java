@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import SufodRepository.SufodBoot.entity.Equipement;
 import SufodRepository.SufodBoot.entity.Ingredient;
 import SufodRepository.SufodBoot.entity.Item;
+import SufodRepository.SufodBoot.entity.PartieCorps;
 import SufodRepository.SufodBoot.exception.ItemException;
 import SufodRepository.SufodBoot.repository.ItemRepository;
 
@@ -47,7 +48,7 @@ public class ItemService {
 		});
 	}
 	
-	public List<Equipement> getAllEquipementByBodypart(String bodypart) {
+	public List<Equipement> getAllEquipementByBodypart(PartieCorps bodypart) {
 		return itemRepo.findByBodyPart(bodypart);
 	}
 	

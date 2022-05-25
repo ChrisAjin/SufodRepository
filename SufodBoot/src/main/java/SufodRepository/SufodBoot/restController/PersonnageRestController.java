@@ -37,7 +37,7 @@ public class PersonnageRestController {
 		return personnageService.getById(id);
 	}
 	
-	//Ok il faudrait trier les donn�es de sorties pour avoir les choses qui nous interesses
+	//Ok
 	@GetMapping("/compte/{id}")
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
 	public List<Personnage> getPersonnageByCompteId(@PathVariable Long id) {
@@ -45,14 +45,14 @@ public class PersonnageRestController {
 	}
 	
 	
-	//Ok mais le resultat sort 2 fois
+	//Ok
 	@GetMapping("/attaque/{id}")
 	@JsonView(JsonViews.PersonnagesWithAttaque.class)
 	public List<Personnage> getPersonnageByAttaqueId(@PathVariable Long id) {
 		return personnageService.getAllPersonnageByAttaqueId(id);
 	}
 	
-	//A tester car aucun element dans la table item_personnage
+	//Ok
 	@GetMapping("/equipement/{id}")
 	@JsonView(JsonViews.PersonnageWithEquipement.class)
 	public List<Personnage> getPersonnageByEquipementId(@PathVariable Long id) {

@@ -15,43 +15,19 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import SufodRepository.SufodBoot.entity.JsonViews.PersonnagesWithAttaque;
 
 @Entity
 @SequenceGenerator(sequenceName = "seqPersonnage", name = "seqPersonnageJPA")
 public class Personnage extends Vivant {
 
 	/*----------- Attributs -----------*/
-	@JsonView(JsonViews.Common.class)
-	protected int pc;
+
 	
 	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	protected Metier metier;
 	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipTete;
 	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipPlastron;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipCou;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipMain;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipPoignet;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipPied;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipJambe;
-	
-	@JsonView(JsonViews.Common.class)
-	protected Long equipBras;
 	
 	@JsonView(JsonViews.Common.class)
 	private int xp;
@@ -81,14 +57,14 @@ public class Personnage extends Vivant {
 
 	}
 
-	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
-			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, int pc, Metier metier) {
+	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, 
+		 int attMagique, int attPhysique, int attDistance, int defMagique,
+			int defPhysique, int defDistance, Metier metier) {
 
-		super(id, nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
+		super(id, nom, description, niveau, classe, pvMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 
-		this.pc = pc;
+		
 
 		this.metier = metier;
 	}
@@ -100,21 +76,16 @@ public class Personnage extends Vivant {
 		super(nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 
-		this.pc = pc;
+		
 
 		this.metier = metier;
 	}
 
 	/*----------- Getters & Setters -----------*/
 
-	public int getPc() {
-		return pc;
-	}
 
 
-	public void setPc(int pc) {
-		this.pc = pc;
-	}
+
 
 	public Metier getMetier() {
 		return metier;
@@ -124,69 +95,7 @@ public class Personnage extends Vivant {
 		this.metier = metier;
 	}
 
-	public Long getEquipTete() {
-		return equipTete;
-	}
-
-	public void setEquipTete(Long equipTete) {
-		this.equipTete = equipTete;
-	}
-
-	public Long getEquipPlastron() {
-		return equipPlastron;
-	}
-
-	public void setEquipPlastron(Long equipPlastron) {
-		this.equipPlastron = equipPlastron;
-	}
-
-	public Long getEquipCou() {
-		return equipCou;
-	}
-
-	public void setEquipCou(Long equipCou) {
-		this.equipCou = equipCou;
-	}
-
-	public Long getEquipMain() {
-		return equipMain;
-	}
-
-	public void setEquipMain(Long equipMain) {
-		this.equipMain = equipMain;
-	}
-
-	public Long getEquipPoignet() {
-		return equipPoignet;
-	}
-
-	public void setEquipPoignet(Long equipPoignet) {
-		this.equipPoignet = equipPoignet;
-	}
-
-	public Long getEquipPied() {
-		return equipPied;
-	}
-
-	public void setEquipPied(Long equipPied) {
-		this.equipPied = equipPied;
-	}
-
-	public Long getEquipJambe() {
-		return equipJambe;
-	}
-
-	public void setEquipJambe(Long equipJambe) {
-		this.equipJambe = equipJambe;
-	}
-
-	public Long getEquipBras() {
-		return equipBras;
-	}
-
-	public void setEquipBras(Long equipBras) {
-		this.equipBras = equipBras;
-	}
+	
 
 	public int getXp() {
 		return xp;
@@ -224,8 +133,7 @@ public class Personnage extends Vivant {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(attaques, compte, equipBras, equipCou, equipJambe, equipMain, equipPied,
-				equipPlastron, equipPoignet, equipTete, items, metier, pc, xp);
+		result = prime * result + Objects.hash(attaques, compte, items, metier, xp);
 		return result;
 	}
 
@@ -239,11 +147,10 @@ public class Personnage extends Vivant {
 			return false;
 		Personnage other = (Personnage) obj;
 		return Objects.equals(attaques, other.attaques) && Objects.equals(compte, other.compte)
-				&& equipBras == other.equipBras && equipCou == other.equipCou && equipJambe == other.equipJambe
-				&& equipMain == other.equipMain && equipPied == other.equipPied && equipPlastron == other.equipPlastron
-				&& equipPoignet == other.equipPoignet && equipTete == other.equipTete
-				&& Objects.equals(items, other.items) && metier == other.metier && pc == other.pc && xp == other.xp;
+				&& Objects.equals(items, other.items) && metier == other.metier && xp == other.xp;
 	}
+
+	
 	
 	
 

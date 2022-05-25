@@ -10,20 +10,20 @@ import org.springframework.data.repository.query.Param;
 import SufodRepository.SufodBoot.entity.Equipement;
 import SufodRepository.SufodBoot.entity.Ingredient;
 import SufodRepository.SufodBoot.entity.Item;
-import SufodRepository.SufodBoot.entity.Joueur;
+import SufodRepository.SufodBoot.entity.PartieCorps;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
 	@Query("Select i from Item i where i.libelle=:libelle")
 	List<Item> findByNom(@Param("libelle") String libelle);
 
-		@Query("Select i from Item i left join fetch i.personnages where i.id=:id")
+	@Query("Select distinct i from Item i left join fetch i.personnages as p where p.id=:id")
 	List<Item> findItemsByPersonnageId(Long id);
 
-	@Query("Select e from Equipement e left join fetch  e.personnages where e.id=:id")
+	@Query("Select distinct e from Equipement e left join fetch e.personnages as p where p.id=:id")
 	List<Equipement> findEquipementsByPersonnageId(Long id);
 
-	@Query("Select i from Ingredient i left join fetch  i.personnages where i.id=:id")
+	@Query("Select distinct i from Ingredient i left join fetch i.personnages as p where p.id=:id")
 	List<Ingredient> findIngredientsByPersonnageId(Long id);
 
 	@Query("Select e from Equipement e")
@@ -44,6 +44,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	
 	
 	@Query("select e from Equipement e where e.localisation=:localisation")
-	List<Equipement> findByBodyPart(@Param("localisation") String localisation);
+	List<Equipement> findByBodyPart(@Param("localisation") PartieCorps localisation);
 
 }

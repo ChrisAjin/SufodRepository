@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SufodRepository.SufodBoot.entity.Monstre;
+import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.exception.MonstreException;
-import SufodRepository.SufodBoot.repository.AttaqueRepository;
 import SufodRepository.SufodBoot.repository.MonstreRepository;
 
 @Service
@@ -20,8 +20,12 @@ public class MonstreService {
 		return monstreRepository.findAll();
 	}
 	
+	public List<Monstre> getAllMonstreByAttaqueId(Long id) {
+		return monstreRepository.findMonstresByIdAttaque(id);
+	}
+	
 	/*----------- findByID -----------*/
-	public Monstre getById(Integer id) {
+	public Monstre getById(Long id) {
 		return monstreRepository.findById(id).orElseThrow(MonstreException::new);
 	}
 	/*----------- Create -----------*/

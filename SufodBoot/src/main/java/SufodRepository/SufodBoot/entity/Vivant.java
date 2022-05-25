@@ -46,22 +46,7 @@ public abstract class Vivant {
 	protected int pv;
 	
 	@JsonView(JsonViews.Common.class)
-	protected int esquive;
-	
-	@JsonView(JsonViews.Common.class)
 	protected int vitesse;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int pa;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int paMax;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int pm;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int pmMax;
 	
 	@JsonView(JsonViews.Common.class)
 	protected int attMagique;
@@ -98,8 +83,8 @@ public abstract class Vivant {
 
 	
 
-	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
-			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
+	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax,
+			 int attMagique, int attPhysique, int attDistance, int defMagique,
 			int defPhysique, int defDistance) {
 	
 		this.id = id;
@@ -112,12 +97,6 @@ public abstract class Vivant {
 		this.classe = classe;
 		
 		this.pvMax = pvMax;
-		
-		this.esquive = esquive;
-		this.vitesse = vitesse;
-		
-		this.paMax = paMax;
-		this.pmMax = pmMax;
 		
 		this.attMagique = attMagique;
 		this.attPhysique = attPhysique;
@@ -140,11 +119,7 @@ public abstract class Vivant {
 		
 		this.pvMax = pvMax;
 		
-		this.esquive = esquive;
 		this.vitesse = vitesse;
-		
-		this.paMax = paMax;
-		this.pmMax = pmMax;
 		
 		this.attMagique = attMagique;
 		this.attPhysique = attPhysique;
@@ -227,15 +202,7 @@ public abstract class Vivant {
 	}
 
 
-	public int getEsquive() {
-		return esquive;
-	}
-
-
-	public void setEsquive(int esquive) {
-		this.esquive = esquive;
-	}
-
+	
 
 	public int getVitesse() {
 		return vitesse;
@@ -247,44 +214,13 @@ public abstract class Vivant {
 	}
 
 
-	public int getPa() {
-		return pa;
-	}
+	
 
 
-	public void setPa(int pa) {
-		this.pa = pa;
-	}
 
 
-	public int getPaMax() {
-		return paMax;
-	}
 
 
-	public void setPaMax(int paMax) {
-		this.paMax = paMax;
-	}
-
-
-	public int getPm() {
-		return pm;
-	}
-
-
-	public void setPm(int pm) {
-		this.pm = pm;
-	}
-
-
-	public int getPmMax() {
-		return pmMax;
-	}
-
-
-	public void setPmMax(int pmMax) {
-		this.pmMax = pmMax;
-	}
 
 
 	public int getAttMagique() {

@@ -2,32 +2,28 @@ package SufodRepository.SufodBoot.entity;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-
-//import sufod.entity.JsonViews;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+
+//import sufod.entity.JsonViews;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -46,17 +42,18 @@ public abstract class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seqItemSufod")
 	@Id
 	protected Long id;
-	@Column(name = "libelle", nullable = false, length = 30)
+	
+	@Column(name = "libelle", length = 30)
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Libelle manquant")
 	protected String libelle;
-	@Column(name = "description", nullable = false, length = 500)
+	
+	@Column(name = "description", length = 500)
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Description manquante")
 	protected String description;
-	@NotEmpty(message = "aucune chance de drop?")
-	@JsonView(JsonViews.Common.class)
+	
 	@Column(name = "drop_chance")
+	@JsonView(JsonViews.Common.class)
 	protected double dropChance;
 
 	public Item() {

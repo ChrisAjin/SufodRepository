@@ -10,10 +10,10 @@ import SufodRepository.SufodBoot.entity.Attaque;
 
 public interface AttaqueRepository extends JpaRepository<Attaque, Long>{
 	
-	@Query("select a from Attaque a left join fetch a.personnages where a.id=:id")
+	@Query("select distinct a from Attaque a left join fetch a.personnages as p where p.id=:id")
 	List<Attaque> findAttaquesByPersonnageId (@Param("id")Long id);
 	
-	@Query("select a from Attaque a left join fetch a.monstres where a.id=:id")
+	@Query("select distinct a from Attaque a left join fetch a.monstres as m where m.id=:id")
 	List<Attaque> findAttaquesByMonstreId (@Param("id")Long id);
 
 }

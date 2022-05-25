@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import SufodRepository.SufodBoot.entity.Attaque;
 import SufodRepository.SufodBoot.entity.JsonViews;
-import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.services.AttaqueService;
 
 
@@ -38,22 +37,25 @@ public class AttaqueRestController {
 		return attaqueService.getById(id);
 	}
 
+
+	//Ok
+	@GetMapping("/personnage/{id}")
+	@JsonView(JsonViews.AttaquesWithPersonnage.class)
+	public List<Attaque> getAttaquesPersonnage(@PathVariable Long id) {
+		return attaqueService.getAttaquesByPersonnageId(id);
+	}
+	
+	//Ok
+	@GetMapping("/monstre/{id}")
+	@JsonView(JsonViews.AttaquesWithMonstre.class)
+	public List<Attaque> getAttaquesMonstre(@PathVariable Long id) {
+		return attaqueService.getAttaquesByMonstreId(id);
+	}
+	
+	//OK
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Attaque create(@RequestBody Attaque attaque) {
 		return attaqueService.create(attaque);
-	}
-	//Rien ne sort, peut etre car dans l'entite attaque on a le mappped by 
-	@GetMapping("/personnage/{id}")
-	@JsonView(JsonViews.AttaquesWithPersonnage.class)
-	public List<Attaque> getAttaquesPersonnage(Long id) {
-		return attaqueService.getAttaquesByPersonnageId(id);
-	}
-	
-	//Pas tester pas d'attaque pour un monstre
-	@GetMapping("/monstre/{id}")
-	@JsonView(JsonViews.AttaquesWithMonstre.class)
-	public List<Attaque> getAttaquesMonstre(Long id) {
-		return attaqueService.getAttaquesByMonstreId(id);
 	}
 }

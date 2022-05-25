@@ -24,16 +24,11 @@ public class ItemRestController {
 	@Autowired
 	private ItemService itemService ;
 	
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Item> getAll() {
 		return itemService.getAll();
-	}
-
-	@JsonView(JsonViews.Common.class)
-	@PostMapping("")
-	public Item create(@RequestBody Item item) {
-		return itemService.create(item);
 	}
 
 }

@@ -1,15 +1,10 @@
 package SufodRepository.SufodBoot.entity;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -21,36 +16,35 @@ public class Equipement extends Item {
 	@Column(name = "pv")
 	@JsonView(JsonViews.Common.class)
 	private int pv;
+	
 	@Column(name = "def_magique")
 	@JsonView(JsonViews.Common.class)
-	
 	private double defMagique;
+	
 	@Column(name = "def_physique")
 	@JsonView(JsonViews.Common.class)
-	
 	private double defPhysique;
+	
 	@Column(name = "def_distance")
 	@JsonView(JsonViews.Common.class)
-	
 	private double defDistance;
+	
 	@Column(name = "attaque_magique")
 	@JsonView(JsonViews.Common.class)
-	
 	private double attMagique;
+	
 	@Column(name = "attaque_physique")
 	@JsonView(JsonViews.Common.class)
-	
 	private double attPhysique;
+	
 	@Column(name = "attaque_distance")
 	@JsonView(JsonViews.Common.class)
 	private double attDistance;
-	@Column(name = "esquive")
-	@JsonView(JsonViews.Common.class)
-	private double Esquive;
+
 	
 	@Column(name = "localisation")
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Localisation manquante")
+	@NotNull
 	private PartieCorps localisation;
 
 	public Equipement() {
@@ -58,7 +52,7 @@ public class Equipement extends Item {
 	}
 
 	public Equipement(int pv, double defMagique, double defPhysique, double defDistance, double attMagique,
-			double attPhysique, double attDistance, double esquive, PartieCorps localisation) {
+			double attPhysique, double attDistance, PartieCorps localisation) {
 		this.pv = pv;
 		this.defMagique = defMagique;
 		this.defPhysique = defPhysique;
@@ -66,7 +60,6 @@ public class Equipement extends Item {
 		this.attMagique = attMagique;
 		this.attPhysique = attPhysique;
 		this.attDistance = attDistance;
-		this.Esquive = esquive;
 		this.localisation = localisation;
 	}
 
@@ -124,14 +117,6 @@ public class Equipement extends Item {
 
 	public void setAttDistance(double attDistance) {
 		this.attDistance = attDistance;
-	}
-
-	public double getEsquive() {
-		return Esquive;
-	}
-
-	public void setEsquive(double esquive) {
-		Esquive = esquive;
 	}
 
 	public PartieCorps getLocalisation() {

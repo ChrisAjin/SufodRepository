@@ -21,8 +21,8 @@ public class NewSecurityconfig {
 				.csrf().ignoringAntMatchers("/api/**")
 				.and()
 				.authorizeHttpRequests()
-					.antMatchers(HttpMethod.POST, "/api/auth/inscription").permitAll()
-					.antMatchers("/api/**").authenticated()
+				//	.antMatchers(HttpMethod.POST, "/api/auth/inscription").permitAll()
+					.antMatchers("/api/**").permitAll()
 				.and()
 				.httpBasic();
 		// @formatter:on

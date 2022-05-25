@@ -22,7 +22,7 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	@Query("Select f from Joueur f")
 	List<Joueur> findAllJoueurs();
 	
-	@Query("Select c from Compte c left join fetch c.personnages where c.id=:id")
+	@Query("Select distinct c from Compte c left join fetch c.personnages as p where p.id=:id")
 	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
 		
 }

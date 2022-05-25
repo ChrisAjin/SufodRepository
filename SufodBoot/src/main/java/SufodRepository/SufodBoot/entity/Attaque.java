@@ -8,14 +8,10 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -37,20 +33,10 @@ public class Attaque {
 	
 	@JsonView(JsonViews.Common.class)
 	private int degats;
-	
-	@JsonView(JsonViews.Common.class)
-	private int paBase;
-	
-	@JsonView(JsonViews.Common.class)
-	private int precision;
-	
-	@JsonView(JsonViews.Common.class)
-	private int coupcritique;
-	
+		
 	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	private TypeAtt type;
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
@@ -60,23 +46,19 @@ public class Attaque {
 
 	}
 
-	public Attaque(TypeAtt type, String nom, int degats, int paBase, int precision,int coupcritique) {
+	public Attaque(TypeAtt type, String nom, int degats) {
 		this.nom = nom;
 		this.degats = degats;
-		this.paBase = paBase;
-		this.precision = precision;
 		this.type = type;
-		this.coupcritique = coupcritique;
+		
 	}
 
-	public Attaque(Long id, String nom, int degats, int paBase, int precision, TypeAtt type,int coupcritique) {
+	public Attaque(Long id, String nom, int degats, TypeAtt type) {
 		this.id = id;
 		this.nom = nom;
 		this.degats = degats;
-		this.paBase = paBase;
-		this.precision = precision;
 		this.type = type;
-		this.coupcritique = coupcritique;
+		
 	}
 
 	public String getNom() {
@@ -95,21 +77,7 @@ public class Attaque {
 		this.degats = degats;
 	}
 
-	public int getPaBase() {
-		return paBase;
-	}
-
-	public void setPaBase(int paBase) {
-		this.paBase = paBase;
-	}
-
-	public int getPrecision() {
-		return precision;
-	}
-
-	public void setPrecision(int precision) {
-		this.precision = precision;
-	}
+	
 
 	public TypeAtt getType() {
 		return type;
@@ -128,13 +96,7 @@ public class Attaque {
 	}
 	
 
-	public int getCoupcritique() {
-		return coupcritique;
-	}
-
-	public void setCoupcritique(int coupcritique) {
-		this.coupcritique = coupcritique;
-	}
+	
 
 	@Override
 	public int hashCode() {

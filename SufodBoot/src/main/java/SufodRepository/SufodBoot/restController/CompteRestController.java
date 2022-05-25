@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import SufodRepository.SufodBoot.entity.Admin;
 import SufodRepository.SufodBoot.entity.Compte;
 import SufodRepository.SufodBoot.entity.JsonViews;
 import SufodRepository.SufodBoot.services.CompteServices;
@@ -44,10 +43,10 @@ public class CompteRestController {
 		return compteServices.create(compte);
 	}
 	
-	//Erreur 500 Le joinColumn est du cote de personnage  
+	//OK
 	@GetMapping("/personnage/{id}")
 	@JsonView(JsonViews.CompteWithPersonnage.class)
-	public Compte getCompte(Long id) {
+	public Compte getCompte(@PathVariable Long id) {
 		return compteServices.getCompteByPersonnageId(id);
 	}
 

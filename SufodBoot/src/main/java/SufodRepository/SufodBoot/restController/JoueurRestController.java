@@ -23,12 +23,14 @@ public class JoueurRestController {
 		@Autowired
 		private CompteServices compteServices ;
 		
+		//Ok
 		@JsonView(JsonViews.Common.class)
 		@GetMapping("")
 		public List<Joueur> getAll() {
 			return compteServices.getAllJoueurs();
 		}
 		
+		//Ok
 		@GetMapping("/{id}")
 		@JsonView(JsonViews.Common.class)
 		public Joueur getById(@PathVariable Long id) {

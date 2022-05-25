@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import SufodRepository.SufodBoot.entity.Equipement;
 import SufodRepository.SufodBoot.entity.JsonViews;
+import SufodRepository.SufodBoot.entity.PartieCorps;
 import SufodRepository.SufodBoot.services.ItemService;
 
 @RestController
@@ -21,21 +22,24 @@ public class EquipementRestController {
 	@Autowired
 	private ItemService itemService  ;
 	
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Equipement> getAll() {
 		return itemService.getAllEquipements();
 	}
 	
+	//Ok
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Equipement getEquipementById(@PathVariable Long id) {
 		return (Equipement) itemService.getEquipementById(id);
 	}
 	
-	@GetMapping("/{bodypart}")
+	//Ok
+	@GetMapping("/bodypart/{bodypart}")
 	@JsonView(JsonViews.Common.class)
-	public List<Equipement> getByBodypart(@PathVariable String bodypart) {
+	public List<Equipement> getByBodypart(@PathVariable PartieCorps bodypart) {
 		return itemService.getAllEquipementByBodypart(bodypart);
 	}
 
