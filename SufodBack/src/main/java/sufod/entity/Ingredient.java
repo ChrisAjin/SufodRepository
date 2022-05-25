@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("indgreient")
+@DiscriminatorValue("Ingredient")
 public class Ingredient extends Item {
 
 	public Ingredient() {

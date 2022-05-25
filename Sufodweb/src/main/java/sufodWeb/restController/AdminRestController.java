@@ -19,12 +19,14 @@ public class AdminRestController {
 	@Autowired
 	private CompteServices compteServices ;
 	
+	//OK
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Admin> getAll() {
 		return compteServices.getAllAdmin();
 	}
 	
+	//OK
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Admin getById(@PathVariable Long id) {

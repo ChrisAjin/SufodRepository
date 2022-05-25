@@ -91,7 +91,8 @@ public class AppSpring {
 	e2.setLocalisation(PartieCorps.bras_droit);
 	e2.setPv(1000);
 	
-	
+	itemService.create(e2);
+
 	Equipement e3 = new Equipement();
 	e3.setAttDistance(101);
 	e3.setAttMagique(212);
@@ -106,6 +107,7 @@ public class AppSpring {
 	e3.setLocalisation(PartieCorps.bras_droit);
 	e3.setPv(2000);
 	
+	itemService.create(e3);
 	
 	Personnage p1 = new Personnage();
 	p1.setAttDistance(11);
@@ -123,7 +125,8 @@ public class AppSpring {
 	p1.setEquipBras(e2.getId());
 	
 	//p1.setEquipTete(e3);
-	
+	personnageService.create(p1);
+
 	
 	
 	Monstre m1 = new Monstre();
@@ -146,6 +149,10 @@ public class AppSpring {
 	m1.setPv(17);
 	m1.setPvMax(18);
 	m1.setVitesse(19);
+	Set<Attaque> setAttmonstre = new HashSet<Attaque>();
+	setAtt.add(a2);
+	setAtt.add(a3);
+	m1.setAttaques(setAttmonstre);
 	
 	monstreService.create(m1);
 	
@@ -176,8 +183,7 @@ public class AppSpring {
 	
 	itemService.create(i1);
 	itemService.create(e1);
-	itemService.create(e2);
-	itemService.create(e3);
+	
 	
 	
 	
@@ -205,7 +211,6 @@ public class AppSpring {
 		p1.setCompte(j1);
 		
 		compteServices.create(j1);
-		personnageService.create(p1);
 		
 	
 	}

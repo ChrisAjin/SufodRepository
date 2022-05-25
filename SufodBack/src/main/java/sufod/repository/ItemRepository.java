@@ -28,6 +28,12 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
 	@Query("Select e from Equipement e")
 	List<Equipement> findAllEquipements();
+	
+	@Query("Select e from Equipement e where e.id=:id")
+	Optional<Equipement> findEquipementById(@Param("id") Long id);
+	
+	@Query("Select i from Ingredient i where i.id=:id")
+	Optional<Ingredient> findIngredientById(@Param("id") Long id);
 
 	@Query("Select i from Ingredient i")
 	List<Ingredient> findAllIngredients();

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@DiscriminatorValue("e")
+@DiscriminatorValue("Equipement")
 public class Equipement extends Item {
 
 	
@@ -47,10 +47,11 @@ public class Equipement extends Item {
 	@Column(name = "esquive")
 	@JsonView(JsonViews.Common.class)
 	private double Esquive;
+	
 	@Column(name = "localisation")
 	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Localisation manquante")
-	PartieCorps localisation;
+	private PartieCorps localisation;
 
 	public Equipement() {
 

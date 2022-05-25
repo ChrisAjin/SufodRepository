@@ -18,20 +18,40 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque {
+	
+	@JsonView(JsonViews.AttaquesWithMonstre.class)
 	@ManyToMany	 (mappedBy = "attaques")
 	Set<Monstre> monstres;
+	
+	@JsonView(JsonViews.AttaquesWithPersonnage.class)
 	@ManyToMany (mappedBy = "attaques")	
 	Set<Personnage> personnages;
+	
+	@JsonView(JsonViews.Common.class)
 	private String nom;
+	
+	@JsonView(JsonViews.Common.class)
 	private int degats;
+	
+	@JsonView(JsonViews.Common.class)
 	private int paBase;
+	
+	@JsonView(JsonViews.Common.class)
 	private int precision;
+	
+	@JsonView(JsonViews.Common.class)
 	private int coupcritique;
+	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	private TypeAtt type;
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
 	private Long id;

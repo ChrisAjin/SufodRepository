@@ -35,6 +35,18 @@ public class ItemService {
 		});
 	}
 	
+	public Equipement getEquipementById(Long id) {
+		return itemRepo.findEquipementById(id).orElseThrow(() -> {
+			throw new ItemException("id inconnu");
+		});
+	}
+	
+	public Ingredient getIngredientById(Long id) {
+		return itemRepo.findIngredientById(id).orElseThrow(() -> {
+			throw new ItemException("id inconnu");
+		});
+	}
+	
 	public List<Equipement> getAllEquipementByBodypart(String bodypart) {
 		return itemRepo.findByBodyPart(bodypart);
 	}

@@ -1,9 +1,8 @@
 package sufod.entity;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -26,7 +25,7 @@ public class Monstre extends Vivant{
 	joinColumns = @JoinColumn(name = "monstre_id"), 
 	inverseJoinColumns = @JoinColumn(name = "attaque_id"))
 	@JsonView(JsonViews.MonstresWithAttaque.class)
-	private List<Attaque> attaques;
+	private Set<Attaque> attaques;
 	
 	@JsonView(JsonViews.Common.class)
 	private int Drop;
@@ -55,6 +54,12 @@ public class Monstre extends Vivant{
 
 	public void setDrop(int drop) {
 		Drop = drop;
+	}
+	public Set<Attaque> getAttaques() {
+		return attaques;
+	}
+	public void setAttaques(Set<Attaque> attaques) {
+		this.attaques = attaques;
 	}
 
 

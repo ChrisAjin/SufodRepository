@@ -24,7 +24,5 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Query("Select c from Compte c left join fetch c.personnages where c.id=:id")
 	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
-	
-	
-	
+		
 }

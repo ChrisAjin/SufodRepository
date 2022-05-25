@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sufod.entity.Attaque;
 import sufod.entity.JsonViews;
+import sufod.entity.Personnage;
 import sufod.services.AttaqueService;
 
 
@@ -22,11 +24,18 @@ public class AttaqueRestController {
 	@Autowired
 	private AttaqueService attaqueService ;
 	
-	
+	//Ok
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Attaque> getAll() {
 		return attaqueService.getAll();
+	}
+	
+	//Ok
+	@GetMapping("/{id}")
+	@JsonView(JsonViews.Common.class)
+	public Attaque getById(@PathVariable Long id) {
+		return attaqueService.getById(id);
 	}
 
 	@JsonView(JsonViews.Common.class)
@@ -34,14 +43,15 @@ public class AttaqueRestController {
 	public Attaque create(@RequestBody Attaque attaque) {
 		return attaqueService.create(attaque);
 	}
-	
-	@GetMapping("personnage/{id}")
+	//Rien ne sort, peut etre car dans l'entite attaque on a le mappped by 
+	@GetMapping("/personnage/{id}")
 	@JsonView(JsonViews.AttaquesWithPersonnage.class)
 	public List<Attaque> getAttaquesPersonnage(Long id) {
 		return attaqueService.getAttaquesByPersonnageId(id);
 	}
 	
-	@GetMapping("monstre/{id}")
+	//Pas tester pas d'attaque pour un monstre
+	@GetMapping("/monstre/{id}")
 	@JsonView(JsonViews.AttaquesWithMonstre.class)
 	public List<Attaque> getAttaquesMonstre(Long id) {
 		return attaqueService.getAttaquesByMonstreId(id);
