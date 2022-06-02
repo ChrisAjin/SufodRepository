@@ -17,6 +17,14 @@ public class CompteServices {
 	
 	@Autowired
 	private CompteRepository compteRepository;
+	
+	public Compte getByPseudo(String pseudo) {
+		return compteRepository.findByPseudo(pseudo).orElseThrow(CompteException::new);
+	}
+	
+	public boolean checkPseudoExist(String login) {
+		return compteRepository.findByPseudo(login).isPresent();
+	}
 
 	public List<Compte> getAll() {
 		return compteRepository.findAll();

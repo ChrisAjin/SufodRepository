@@ -24,5 +24,7 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Query("Select distinct c from Compte c left join fetch c.personnages as p where p.id=:id")
 	Optional<Compte> findCompteByPersonnageId (@Param("id")Long id);
+	
+	Optional<Compte> findByPseudo(String pseudo);
 		
 }

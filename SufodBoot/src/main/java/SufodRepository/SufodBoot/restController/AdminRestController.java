@@ -3,6 +3,7 @@ package SufodRepository.SufodBoot.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import SufodRepository.SufodBoot.entity.JsonViews;
 import SufodRepository.SufodBoot.services.CompteServices;
 @RestController
 @RequestMapping("/api/compte/admin")
+@CrossOrigin(origins = "*")
 public class AdminRestController {
 	@Autowired
 	private CompteServices compteServices ;
