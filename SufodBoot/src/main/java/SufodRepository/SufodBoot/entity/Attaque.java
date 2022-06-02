@@ -1,4 +1,3 @@
-
 package SufodRepository.SufodBoot.entity;
 
 
@@ -97,6 +96,22 @@ public class Attaque {
 	
 
 	
+
+	public Set<Monstre> getMonstres() {
+		return monstres;
+	}
+
+	public void setMonstres(Set<Monstre> monstres) {
+		this.monstres = monstres;
+	}
+
+	public Set<Personnage> getPersonnages() {
+		return personnages;
+	}
+
+	public void setPersonnages(Set<Personnage> personnages) {
+		this.personnages = personnages;
+	}
 
 	@Override
 	public int hashCode() {

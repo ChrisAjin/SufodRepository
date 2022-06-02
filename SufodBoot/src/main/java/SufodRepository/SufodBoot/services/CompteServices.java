@@ -71,16 +71,10 @@ public class CompteServices {
 		compteRepository.delete(compte);
 	}
 
-	public void deleteByIdAdmin(Long id) {
-		Compte compte = new Admin();
-		compte.setId(id);
-		delete(compte);
+	public void deleteById(Long id) {
+		Compte compte = getById(id);
+		compteRepository.delete(compte);
 	}
-
-	public void deleteByIdJoueur(Long id) {
-		Compte compte = new Joueur();
-		compte.setId(id);
-		delete(compte);
-	}
+	
 
 }

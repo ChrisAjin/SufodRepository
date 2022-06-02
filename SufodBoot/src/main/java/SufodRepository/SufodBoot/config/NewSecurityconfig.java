@@ -26,9 +26,9 @@ public class NewSecurityconfig {
 				.csrf().ignoringAntMatchers("/api/**")
 				.and()
 				.authorizeHttpRequests()
-				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.antMatchers(HttpMethod.GET,"/api/compte/pseudo/**").permitAll()
-				//	.antMatchers(HttpMethod.POST, "/api/auth/inscription").permitAll()
+				//.antMatchers(HttpMethod.OPTIONS).permitAll()
+				.antMatchers(HttpMethod.GET).permitAll()
+				
 					.antMatchers("/api/**").permitAll()
 				.and()
 				.httpBasic();
@@ -44,7 +44,7 @@ public class NewSecurityconfig {
 
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth.userDetailsService(userDetailService);		
+	auth.userDetailsService(userDetailService);		
 		
 	}
 

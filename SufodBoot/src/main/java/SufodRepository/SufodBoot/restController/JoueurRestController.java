@@ -4,20 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import SufodRepository.SufodBoot.entity.Admin;
-import SufodRepository.SufodBoot.entity.Compte;
 import SufodRepository.SufodBoot.entity.Joueur;
 import SufodRepository.SufodBoot.entity.JsonViews;
 import SufodRepository.SufodBoot.services.CompteServices;
+
 @RestController
 @RequestMapping("/api/compte/joueur")
 @CrossOrigin(origins = "*")
@@ -48,6 +49,19 @@ public class JoueurRestController {
 		@PostMapping("")
 		public Joueur create(@RequestBody Joueur joueur) {
 			return (Joueur) compteServices.create(joueur);
+		}
+		
+		@JsonView(JsonViews.Common.class)
+		@PutMapping("/{id}")
+		public Joueur update(@RequestBody Joueur joueur, @PathVariable Long id) {
+			joueur.setId(id);
+			return (Joueur) compteServices.update(joueur);
+		}
+		
+		@JsonView(JsonViews.Common.class)
+		@DeleteMapping("/{id}")
+		public void deleteById(@PathVariable Long id) {
+			compteServices.deleteById(id);
 		}
 
 	

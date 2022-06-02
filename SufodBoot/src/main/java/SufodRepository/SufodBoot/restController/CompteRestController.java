@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,6 +46,7 @@ public class CompteRestController {
 		return compteServices.getCompteByPersonnageId(id);
 	}
 	
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/pseudo/{pseudo}")
 	public boolean checkLogin(@PathVariable String pseudo) {
 		return compteServices.checkPseudoExist(pseudo);

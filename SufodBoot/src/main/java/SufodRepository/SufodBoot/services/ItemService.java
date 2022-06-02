@@ -9,6 +9,7 @@ import SufodRepository.SufodBoot.entity.Equipement;
 import SufodRepository.SufodBoot.entity.Ingredient;
 import SufodRepository.SufodBoot.entity.Item;
 import SufodRepository.SufodBoot.entity.PartieCorps;
+import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.exception.ItemException;
 import SufodRepository.SufodBoot.repository.ItemRepository;
 
@@ -35,23 +36,22 @@ public class ItemService {
 			throw new ItemException("id inconnu");
 		});
 	}
-	
+
 	public Equipement getEquipementById(Long id) {
 		return itemRepo.findEquipementById(id).orElseThrow(() -> {
 			throw new ItemException("id inconnu");
 		});
 	}
-	
+
 	public Ingredient getIngredientById(Long id) {
 		return itemRepo.findIngredientById(id).orElseThrow(() -> {
 			throw new ItemException("id inconnu");
 		});
 	}
-	
+
 	public List<Equipement> getAllEquipementByBodypart(PartieCorps bodypart) {
 		return itemRepo.findByBodyPart(bodypart);
 	}
-	
 
 	public Item create(Item item) {
 		if (item.getId() != null) {
@@ -69,23 +69,27 @@ public class ItemService {
 	}
 
 	public void delete(Item item) {
-		itemRepo.delete(item);
+
+		 Item itemEnBase = getById(item.getId());
+
+	/*	if (item.getClass().equals(Equipement.class)) {
+			Equipement itemEnBase = (Equipement) getById(item.getId());
+		}*/
+
+		if (!itemEnBase.getPersonnages().isEmpty()) {
+			for (Personnage personnage : itemEnBase.getPersonnages()) {
+				personnage.getItems().remove(itemEnBase);
+			}
+		}
+
+		itemRepo.delete(itemEnBase);
+
 	}
 
 	public void deleteById(Long id) {
 		Item item = getById(id);
 		itemRepo.delete(item);
 	}
-
-	public void deleteEquipementById(Long id) {
-		Item item = new Equipement();
-		item.setId(id);
-		delete(item);
-	}
-
-	public void deleteIngredientById(Long id) {
-		Item item = new Ingredient();
-		item.setId(id);
-		delete(item);
-	}
+	
+	
 }

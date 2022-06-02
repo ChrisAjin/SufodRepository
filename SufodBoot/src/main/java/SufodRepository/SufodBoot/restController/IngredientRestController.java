@@ -4,16 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import SufodRepository.SufodBoot.entity.Equipement;
 import SufodRepository.SufodBoot.entity.Ingredient;
 import SufodRepository.SufodBoot.entity.JsonViews;
 import SufodRepository.SufodBoot.services.ItemService;
@@ -45,6 +46,19 @@ public class IngredientRestController {
 	@PostMapping("")
 	public Ingredient create(@RequestBody Ingredient ingredient) {
 		return (Ingredient) itemService.create(ingredient);
+	}
+	
+	@JsonView(JsonViews.Common.class)
+	@PutMapping("/{id}")
+	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable Long id) {
+		ingredient.setId(id);
+		return (Ingredient) itemService.update(ingredient);
+	}
+	
+	@JsonView(JsonViews.Common.class)
+	@DeleteMapping("/{id}")
+	public void deleteById(@PathVariable Long id) {
+		itemService.deleteById(id);
 	}
 
 }

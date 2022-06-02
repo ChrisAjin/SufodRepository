@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SufodRepository.SufodBoot.entity.Attaque;
+import SufodRepository.SufodBoot.entity.Monstre;
+import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.exception.AttaqueException;
 import SufodRepository.SufodBoot.repository.AttaqueRepository;
+
 
 @Service
 public class AttaqueService {
@@ -45,12 +48,33 @@ public class AttaqueService {
 		Attaque attaqueEnBase = getById(attaque.getId());
 		attaqueEnBase.setNom(attaque.getNom());
 		attaqueEnBase.setDegats(attaque.getDegats());
-		return attaqueRepository.save(attaqueEnBase);
+		attaqueEnBase.setType(attaque.getType());
+		return attaqueRepository.save(attaque);
 	}
+	
+	
 	/*----------- delete -----------*/
 	public void delete(Attaque attaque) {
-		attaqueRepository.delete(attaque);
 		
+		Attaque attaqueEnBase = getById(attaque.getId());
+		
+		if (!attaqueEnBase.getMonstres().isEmpty()){
+		for (Monstre monstre : attaqueEnBase.getMonstres()){
+            monstre.getAttaques().remove(attaqueEnBase);
+        }
+        }
+        
+        if (!attaqueEnBase.getPersonnages().isEmpty()){
+        for (Personnage personnage : attaqueEnBase.getPersonnages()){
+            personnage.getAttaques().remove(attaqueEnBase);
+        }
+        }
+		
+		
+		
+		attaqueRepository.delete(attaqueEnBase);
+		
+	
 	}
 	/*----------- deleteByID -----------*/
 	public void deleteById(Long id) {
