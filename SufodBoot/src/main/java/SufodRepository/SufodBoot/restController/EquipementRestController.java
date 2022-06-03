@@ -65,10 +65,11 @@ public class EquipementRestController {
 		return (Equipement) itemService.update(equipement);
 	}
 	
-	@JsonView(JsonViews.Common.class)
-	@DeleteMapping("/{id}")
-	public void deleteById(@PathVariable Long id) {
-		itemService.deleteById(id);
-	}
+	
+//	@JsonView(JsonViews.Common.class)
+//	@DeleteMapping("/{id}")
+//	public void deleteById(@PathVariable Long id) {
+//		itemService.deleteById(id);
+//	}
 
 }
