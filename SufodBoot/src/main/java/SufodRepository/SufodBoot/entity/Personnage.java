@@ -24,12 +24,6 @@ public class Personnage extends Vivant {
 
 	
 	@JsonView(JsonViews.Common.class)
-	@Enumerated(EnumType.ORDINAL)
-	protected Metier metier;
-	
-	
-	
-	@JsonView(JsonViews.Common.class)
 	private int xp;
 
 	@JsonView(JsonViews.PersonnagesWithCompte.class)
@@ -58,27 +52,23 @@ public class Personnage extends Vivant {
 	}
 
 	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, 
-		 int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, Metier metier) {
+		 int attaque, int defense) {
 
-		super(id, nom, description, niveau, classe, pvMax, attMagique, attPhysique,
-				attDistance, defMagique, defPhysique, defDistance);
+		super(id, nom, description, niveau, classe, pvMax, attaque, defense);
 
 		
 
-		this.metier = metier;
+		
 	}
 
-	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax, int esquive, int vitesse,
-			int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique, int defPhysique,
-			int defDistance, int pc, Metier metier) {
+	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax,
+			int attaque, int defense) {
 
-		super(nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
-				attDistance, defMagique, defPhysique, defDistance);
+		super(nom, description, niveau, classe, pvMax,attaque, defense);
 
 		
 
-		this.metier = metier;
+		
 	}
 
 	/*----------- Getters & Setters -----------*/
@@ -87,13 +77,7 @@ public class Personnage extends Vivant {
 
 
 
-	public Metier getMetier() {
-		return metier;
-	}
-
-	public void setMetier(Metier metier) {
-		this.metier = metier;
-	}
+	
 
 	
 
@@ -133,7 +117,7 @@ public class Personnage extends Vivant {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(attaques, compte, items, metier, xp);
+		result = prime * result + Objects.hash(attaques, compte, items,xp);
 		return result;
 	}
 
@@ -147,7 +131,7 @@ public class Personnage extends Vivant {
 			return false;
 		Personnage other = (Personnage) obj;
 		return Objects.equals(attaques, other.attaques) && Objects.equals(compte, other.compte)
-				&& Objects.equals(items, other.items) && metier == other.metier && xp == other.xp;
+				&& Objects.equals(items, other.items)&& xp == other.xp;
 	}
 
 	

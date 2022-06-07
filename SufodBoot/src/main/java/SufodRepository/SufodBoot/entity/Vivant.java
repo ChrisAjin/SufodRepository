@@ -44,27 +44,14 @@ public abstract class Vivant {
 	
 	@JsonView(JsonViews.Common.class)
 	protected int pv;
-	
+		
 	@JsonView(JsonViews.Common.class)
-	protected int vitesse;
-	
+	protected int attaque;
+		
 	@JsonView(JsonViews.Common.class)
-	protected int attMagique;
+	protected int defense;
 	
-	@JsonView(JsonViews.Common.class)
-	protected int attPhysique;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int attDistance;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int defMagique;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int defPhysique;
-	
-	@JsonView(JsonViews.Common.class)
-	protected int defDistance;
+
 	
 
 	
@@ -84,8 +71,7 @@ public abstract class Vivant {
 	
 
 	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax,
-			 int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance) {
+			 int attaque, int defense) {
 	
 		this.id = id;
 		
@@ -98,18 +84,13 @@ public abstract class Vivant {
 		
 		this.pvMax = pvMax;
 		
-		this.attMagique = attMagique;
-		this.attPhysique = attPhysique;
-		this.attDistance = attDistance;
+		this.attaque = attaque;
+		this.defense = defense;
 		
-		this.defMagique = defMagique;
-		this.defPhysique = defPhysique;
-		this.defDistance = defDistance;
 	}
 	
-	public Vivant(String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
-			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance) {		
+	public Vivant(String nom, String description, int niveau, Classe classe, int pvMax,
+			int attaque, int defense) {		
 		this.nom = nom;
 		this.description = description;
 		
@@ -119,15 +100,10 @@ public abstract class Vivant {
 		
 		this.pvMax = pvMax;
 		
-		this.vitesse = vitesse;
+		this.attaque = attaque;
 		
-		this.attMagique = attMagique;
-		this.attPhysique = attPhysique;
-		this.attDistance = attDistance;
+		this.defense = defense;
 		
-		this.defMagique = defMagique;
-		this.defPhysique = defPhysique;
-		this.defDistance = defDistance;
 
 	}
 	
@@ -201,89 +177,30 @@ public abstract class Vivant {
 		this.pv = pv;
 	}
 
-
-	
-
-	public int getVitesse() {
-		return vitesse;
+	public int getAttaque() {
+		return attaque;
 	}
 
 
-	public void setVitesse(int vitesse) {
-		this.vitesse = vitesse;
+
+	public void setAttaque(int attaque) {
+		this.attaque = attaque;
 	}
 
 
-	
 
-
-
-
-
-
-
-
-	public int getAttMagique() {
-		return attMagique;
+	public int getDefense() {
+		return defense;
 	}
 
 
-	public void setAttMagique(int attMagique) {
-		this.attMagique = attMagique;
+
+	public void setDefense(int defense) {
+		this.defense = defense;
 	}
 
 
-	public int getAttPhysique() {
-		return attPhysique;
-	}
 
-
-	public void setAttPhysique(int attPhysique) {
-		this.attPhysique = attPhysique;
-	}
-
-
-	public int getAttDistance() {
-		return attDistance;
-	}
-
-
-	public void setAttDistance(int attDistance) {
-		this.attDistance = attDistance;
-	}
-
-
-	public int getDefMagique() {
-		return defMagique;
-	}
-
-
-	public void setDefMagique(int defMagique) {
-		this.defMagique = defMagique;
-	}
-
-
-	public int getDefPhysique() {
-		return defPhysique;
-	}
-
-
-	public void setDefPhysique(int defPhysique) {
-		this.defPhysique = defPhysique;
-	}
-
-
-	public int getDefDistance() {
-		return defDistance;
-	}
-
-
-	public void setDefDistance(int defDistance) {
-		this.defDistance = defDistance;
-	}
-
-
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

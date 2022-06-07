@@ -34,11 +34,10 @@ public class Monstre extends Vivant{
 	public Monstre(){
 	}
 	public Monstre(Long id, String nom, String description, int niveau, Classe classe, int pvMax,
-	 int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance) {
+	 int attaque, int defense) {
 		
-		super(id, nom, description, niveau, classe, pvMax, attMagique, attPhysique,
-				attDistance, defMagique, defPhysique, defDistance);
+		super(id, nom, description, niveau, classe, pvMax, attaque, defense);
+	
 	}
 	
 
