@@ -3,9 +3,11 @@ package SufodRepository.SufodBoot.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,12 +22,10 @@ public class Monstre extends Vivant{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
-	@ManyToMany
-	@JoinTable(name = "monstre_attaque", 
-	joinColumns = @JoinColumn(name = "monstre_id"), 
-	inverseJoinColumns = @JoinColumn(name = "attaque_id"))
+	@ManyToOne
+	@JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "monstre_attaque_id_fk"))
 	@JsonView(JsonViews.MonstresWithAttaque.class)
-	private Set<Attaque> attaques;
+	private Attaque attaque;
 	
 	@JsonView(JsonViews.Common.class)
 	private int Drop;
@@ -36,7 +36,7 @@ public class Monstre extends Vivant{
 	public Monstre(Long id, String nom, String description, int niveau, Classe classe, int pvMax,
 	 int attaque, int defense) {
 		
-		super(id, nom, description, niveau, classe, pvMax, attaque, defense);
+		super(id, nom, description, niveau, classe, pvMax,defense);
 	
 	}
 	
@@ -53,12 +53,13 @@ public class Monstre extends Vivant{
 	public void setDrop(int drop) {
 		Drop = drop;
 	}
-	public Set<Attaque> getAttaques() {
-		return attaques;
+	public Attaque getAttaque() {
+		return attaque;
 	}
-	public void setAttaques(Set<Attaque> attaques) {
-		this.attaques = attaques;
+	public void setAttaque(Attaque attaque) {
+		this.attaque = attaque;
 	}
+	
 
 
 

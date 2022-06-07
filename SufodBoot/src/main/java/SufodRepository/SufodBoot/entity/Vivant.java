@@ -45,8 +45,7 @@ public abstract class Vivant {
 	@JsonView(JsonViews.Common.class)
 	protected int pv;
 		
-	@JsonView(JsonViews.Common.class)
-	protected int attaque;
+	
 		
 	@JsonView(JsonViews.Common.class)
 	protected int defense;
@@ -70,8 +69,8 @@ public abstract class Vivant {
 
 	
 
-	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax,
-			 int attaque, int defense) {
+	public Vivant(Long id, String nom, String description, int niveau, Classe classe, int pvMax
+			 , int defense) {
 	
 		this.id = id;
 		
@@ -84,13 +83,12 @@ public abstract class Vivant {
 		
 		this.pvMax = pvMax;
 		
-		this.attaque = attaque;
 		this.defense = defense;
 		
 	}
 	
 	public Vivant(String nom, String description, int niveau, Classe classe, int pvMax,
-			int attaque, int defense) {		
+			 int defense) {		
 		this.nom = nom;
 		this.description = description;
 		
@@ -100,7 +98,7 @@ public abstract class Vivant {
 		
 		this.pvMax = pvMax;
 		
-		this.attaque = attaque;
+		
 		
 		this.defense = defense;
 		
@@ -177,15 +175,7 @@ public abstract class Vivant {
 		this.pv = pv;
 	}
 
-	public int getAttaque() {
-		return attaque;
-	}
-
-
-
-	public void setAttaque(int attaque) {
-		this.attaque = attaque;
-	}
+	
 
 
 

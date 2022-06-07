@@ -10,6 +10,8 @@ import SufodRepository.SufodBoot.entity.Monstre;
 import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.exception.AttaqueException;
 import SufodRepository.SufodBoot.repository.AttaqueRepository;
+import SufodRepository.SufodBoot.repository.MonstreRepository;
+import SufodRepository.SufodBoot.repository.PersonnageRepository;
 
 
 @Service
@@ -17,6 +19,10 @@ public class AttaqueService {
 	
 	@Autowired
 	private AttaqueRepository attaqueRepository;
+	@Autowired
+	private PersonnageRepository personnageRepository;
+	@Autowired
+	private MonstreRepository monstreRepository;
 
 	
 	public List<Attaque> getAll(){
@@ -55,24 +61,13 @@ public class AttaqueService {
 	
 	/*----------- delete -----------*/
 	public void delete(Attaque attaque) {
+			personnageRepository.setAttaqueToNull(attaque);
 		
-		Attaque attaqueEnBase = getById(attaque.getId());
-		
-		if (!attaqueEnBase.getMonstres().isEmpty()){
-		for (Monstre monstre : attaqueEnBase.getMonstres()){
-            monstre.getAttaques().remove(attaqueEnBase);
-        }
-        }
-        
-        if (!attaqueEnBase.getPersonnages().isEmpty()){
-        for (Personnage personnage : attaqueEnBase.getPersonnages()){
-            personnage.getAttaques().remove(attaqueEnBase);
-        }
-        }
+			monstreRepository.setAttaqueToNull(attaque);
 		
 		
 		
-		attaqueRepository.delete(attaqueEnBase);
+		attaqueRepository.delete(attaque);
 		
 	
 	}

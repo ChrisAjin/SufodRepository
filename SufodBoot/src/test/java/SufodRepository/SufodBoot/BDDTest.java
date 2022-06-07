@@ -103,26 +103,22 @@ public class BDDTest {
 		itemService.create(e3);
 
 		Personnage p1 = new Personnage();
-		p1.setAttaque(11);
+		p1.setAttaque(a3);;
 		p1.setDefense(22);
 		p1.setPvMax(33);
 		;
 		p1.setNiveau(55);
 		p1.setXp(66);
 		p1.setClasse(Classe.Cra);
-		Set<Attaque> setAtt = new HashSet<Attaque>();
 		Set<Item> setEquip = new HashSet<Item>();
 		setEquip.add(e3);
-		setAtt.add(a1);
-		setAtt.add(a2);
-		p1.setAttaques(setAtt);
 		p1.setItems(setEquip);
 
 		// p1.setEquipTete(e3);
 		personnageService.create(p1);
 
 		Monstre m1 = new Monstre();
-		m1.setAttaque(1);
+		m1.setAttaque(a1);
 		
 		m1.setClasse(Classe.Physique);
 		m1.setDefense(5);
@@ -134,10 +130,6 @@ public class BDDTest {
 
 		m1.setPv(17);
 		m1.setPvMax(18);
-		Set<Attaque> setAttmonstre = new HashSet<Attaque>();
-		setAttmonstre.add(a2);
-		setAttmonstre.add(a3);
-		m1.setAttaques(setAttmonstre);
 
 		monstreService.create(m1);
 

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,11 +21,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Attaque {
 	
 	@JsonView(JsonViews.AttaquesWithMonstre.class)
-	@ManyToMany	 (mappedBy = "attaques")
+	@OneToMany	 (mappedBy = "attaque")
 	Set<Monstre> monstres;
 	
 	@JsonView(JsonViews.AttaquesWithPersonnage.class)
-	@ManyToMany (mappedBy = "attaques")	
+	@OneToMany (mappedBy = "attaque")	
 	Set<Personnage> personnages;
 	
 	@JsonView(JsonViews.Common.class)

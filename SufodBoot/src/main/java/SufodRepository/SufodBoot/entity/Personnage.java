@@ -32,11 +32,9 @@ public class Personnage extends Vivant {
 	private Compte compte;
 	
 	@JsonView(JsonViews.PersonnagesWithAttaque.class)
-	@ManyToMany
-	@JoinTable(name = "personnage_attaque", 
-	joinColumns = @JoinColumn(name = "personnage_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk")), 
-	inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "attaque_attaque_id_fk")))
-	Set<Attaque> attaques;
+	@ManyToOne
+	@JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk"))
+	private Attaque attaque;
 	
 	@ManyToMany
 	@JoinTable(name = "personnage_item", 
@@ -52,9 +50,9 @@ public class Personnage extends Vivant {
 	}
 
 	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, 
-		 int attaque, int defense) {
+		 Attaque attaque, int defense) {
 
-		super(id, nom, description, niveau, classe, pvMax, attaque, defense);
+		super(id, nom, description, niveau, classe, pvMax, defense);
 
 		
 
@@ -64,7 +62,7 @@ public class Personnage extends Vivant {
 	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax,
 			int attaque, int defense) {
 
-		super(nom, description, niveau, classe, pvMax,attaque, defense);
+		super(nom, description, niveau, classe, pvMax,defense);
 
 		
 
@@ -97,12 +95,14 @@ public class Personnage extends Vivant {
 		this.compte = compte;
 	}
 
-	public Set<Attaque> getAttaques() {
-		return attaques;
+	
+
+	public Attaque getAttaque() {
+		return attaque;
 	}
 
-	public void setAttaques(Set<Attaque> attaques) {
-		this.attaques = attaques;
+	public void setAttaque(Attaque attaque) {
+		this.attaque = attaque;
 	}
 
 	public Set<Item> getItems() {
@@ -117,7 +117,7 @@ public class Personnage extends Vivant {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(attaques, compte, items,xp);
+		result = prime * result + Objects.hash(attaque, compte, items,xp);
 		return result;
 	}
 
@@ -130,7 +130,7 @@ public class Personnage extends Vivant {
 		if (getClass() != obj.getClass())
 			return false;
 		Personnage other = (Personnage) obj;
-		return Objects.equals(attaques, other.attaques) && Objects.equals(compte, other.compte)
+		return Objects.equals(attaque, other.attaque) && Objects.equals(compte, other.compte)
 				&& Objects.equals(items, other.items)&& xp == other.xp;
 	}
 
