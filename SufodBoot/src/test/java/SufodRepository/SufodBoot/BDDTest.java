@@ -71,12 +71,8 @@ public class BDDTest {
 		attaqueService.create(a3);
 
 		Equipement e2 = new Equipement();
-		e2.setAttDistance(111);
-		e2.setAttMagique(222);
-		e2.setAttPhysique(333);
-		e2.setDefDistance(444);
-		e2.setDefMagique(555);
-		e2.setDefPhysique(666);
+		e2.setAttaque(111);
+		e2.setDefense(222);
 		e2.setDescription("Description test de E2");
 		e2.setDropChance(888);
 	
@@ -87,12 +83,8 @@ public class BDDTest {
 		itemService.create(e2);
 
 		Equipement e3 = new Equipement();
-		e3.setAttDistance(101);
-		e3.setAttMagique(212);
-		e3.setAttPhysique(323);
-		e3.setDefDistance(434);
-		e3.setDefMagique(545);
-		e3.setDefPhysique(656);
+		e3.setAttaque(101);
+		e3.setDefense(212);
 		e3.setDescription("Description test de E3");
 		e3.setDropChance(878);
 		
@@ -134,12 +126,8 @@ public class BDDTest {
 		monstreService.create(m1);
 
 		Equipement e1 = new Equipement();
-		e1.setAttDistance(1);
-		e1.setAttMagique(2);
-		e1.setAttPhysique(3);
-		e1.setDefDistance(4);
-		e1.setDefMagique(5);
-		e1.setDefPhysique(6);
+		e1.setAttaque(1);
+		e1.setDefense(2);
 		e1.setDescription("EquipementTestDescription");
 		e1.setDropChance(8);
 		e1.setLibelle("EquipementTest");

@@ -17,29 +17,13 @@ public class Equipement extends Item {
 	@JsonView(JsonViews.Common.class)
 	private int pv;
 	
-	@Column(name = "def_magique")
+	@Column(name = "defense")
 	@JsonView(JsonViews.Common.class)
-	private double defMagique;
+	private double defense;
 	
-	@Column(name = "def_physique")
+	@Column(name = "attaque")
 	@JsonView(JsonViews.Common.class)
-	private double defPhysique;
-	
-	@Column(name = "def_distance")
-	@JsonView(JsonViews.Common.class)
-	private double defDistance;
-	
-	@Column(name = "attaque_magique")
-	@JsonView(JsonViews.Common.class)
-	private double attMagique;
-	
-	@Column(name = "attaque_physique")
-	@JsonView(JsonViews.Common.class)
-	private double attPhysique;
-	
-	@Column(name = "attaque_distance")
-	@JsonView(JsonViews.Common.class)
-	private double attDistance;
+	private double attaque;
 
 	
 	@Column(name = "localisation")
@@ -51,15 +35,10 @@ public class Equipement extends Item {
 
 	}
 
-	public Equipement(int pv, double defMagique, double defPhysique, double defDistance, double attMagique,
-			double attPhysique, double attDistance, PartieCorps localisation) {
+	public Equipement(int pv, double defense, double attaque, PartieCorps localisation) {
 		this.pv = pv;
-		this.defMagique = defMagique;
-		this.defPhysique = defPhysique;
-		this.defDistance = defDistance;
-		this.attMagique = attMagique;
-		this.attPhysique = attPhysique;
-		this.attDistance = attDistance;
+		this.defense = defense;
+		this.attaque = attaque;
 		this.localisation = localisation;
 	}
 
@@ -71,52 +50,21 @@ public class Equipement extends Item {
 		this.pv = pv;
 	}
 
-	public double getDefMagique() {
-		return defMagique;
+	
+	public double getDefense() {
+		return defense;
 	}
 
-	public void setDefMagique(double defMagique) {
-		this.defMagique = defMagique;
+	public void setDefense(double defense) {
+		this.defense = defense;
 	}
 
-	public double getDefPhysique() {
-		return defPhysique;
+	public double getAttaque() {
+		return attaque;
 	}
 
-	public void setDefPhysique(double defPhysique) {
-		this.defPhysique = defPhysique;
-	}
-
-	public double getDefDistance() {
-		return defDistance;
-	}
-
-	public void setDefDistance(double defDistance) {
-		this.defDistance = defDistance;
-	}
-
-	public double getAttMagique() {
-		return attMagique;
-	}
-
-	public void setAttMagique(double attMagique) {
-		this.attMagique = attMagique;
-	}
-
-	public double getAttPhysique() {
-		return attPhysique;
-	}
-
-	public void setAttPhysique(double attPhysique) {
-		this.attPhysique = attPhysique;
-	}
-
-	public double getAttDistance() {
-		return attDistance;
-	}
-
-	public void setAttDistance(double attDistance) {
-		this.attDistance = attDistance;
+	public void setAttaque(double attaque) {
+		this.attaque = attaque;
 	}
 
 	public PartieCorps getLocalisation() {
