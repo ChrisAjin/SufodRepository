@@ -28,7 +28,7 @@ public class PersonnageRestController {
 	private PersonnageService personnageService;
 
 	//OK
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Personnage.class)
 	@GetMapping("")
 	public List<Personnage> getAll() {
 		return personnageService.getAll();
@@ -36,7 +36,7 @@ public class PersonnageRestController {
 	
 	//Ok
 	@GetMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Personnage.class)
 	public Personnage getById(@PathVariable Long id) {
 		return personnageService.getById(id);
 	}
@@ -70,7 +70,7 @@ public class PersonnageRestController {
 		return personnageService.create(personnage);
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Personnage.class)
 	@PutMapping("/{id}")
 	public Personnage update(@RequestBody Personnage personnage, @PathVariable Long id) {
 		personnage.setId(id);

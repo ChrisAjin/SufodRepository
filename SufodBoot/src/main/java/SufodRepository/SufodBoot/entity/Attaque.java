@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque {
 	
-	@JsonView(JsonViews.AttaquesWithMonstre.class)
+	@JsonView({JsonViews.AttaquesWithMonstre.class,JsonViews.Attaque.class})
 	@OneToMany	 (mappedBy = "attaque")
 	Set<Monstre> monstres;
 	
-	@JsonView(JsonViews.AttaquesWithPersonnage.class)
+	@JsonView({JsonViews.AttaquesWithPersonnage.class,JsonViews.Attaque.class})
 	@OneToMany (mappedBy = "attaque")	
 	Set<Personnage> personnages;
 	
@@ -39,6 +39,7 @@ public class Attaque {
 	private TypeAtt type;
 	
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
 	private Long id;
 

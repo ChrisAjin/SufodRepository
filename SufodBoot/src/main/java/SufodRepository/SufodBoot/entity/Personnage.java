@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,12 +24,12 @@ public class Personnage extends Vivant {
 	@JsonView(JsonViews.Common.class)
 	private int xp;
 
-	@JsonView(JsonViews.PersonnagesWithCompte.class)
+	@JsonView({JsonViews.PersonnagesWithCompte.class,JsonViews.Personnage.class})
 	@ManyToOne
 	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "personnage_compte_id_fk"))
 	private Compte compte;
 	
-	@JsonView(JsonViews.PersonnagesWithAttaque.class)
+	@JsonView({JsonViews.PersonnagesWithAttaque.class, JsonViews.Personnage.class})
 	@ManyToOne
 	@JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "personnage_attaque_id_fk"))
 	private Attaque attaque;
@@ -40,7 +38,7 @@ public class Personnage extends Vivant {
 	@JoinTable(name = "personnage_item", 
 	joinColumns = @JoinColumn(name = "personnage_id"), 
 	inverseJoinColumns = @JoinColumn(name = "item_id"))
-	@JsonView(JsonViews.PersonnageWithItem.class)
+	@JsonView({JsonViews.PersonnageWithItem.class, JsonViews.Personnage.class})
 	Set<Item> items;
 
 	/*----------- Constrictors -----------*/
@@ -50,23 +48,18 @@ public class Personnage extends Vivant {
 	}
 
 	public Personnage(Long id, String nom, String description, int niveau, Classe classe, int pvMax, 
-		 Attaque attaque, int defense) {
+		 Attaque attaque, int defense, Compte compte) {
 
 		super(id, nom, description, niveau, classe, pvMax, defense);
-
-		
-
-		
+		this.compte = compte;	
 	}
 
 	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax,
-			int attaque, int defense) {
+			int attaque, int defense, Compte compte) {
 
 		super(nom, description, niveau, classe, pvMax,defense);
-
-		
-
-		
+		this.compte = compte;
+	
 	}
 
 	/*----------- Getters & Setters -----------*/

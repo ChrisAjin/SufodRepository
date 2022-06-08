@@ -28,7 +28,7 @@ public class AttaqueRestController {
 	private AttaqueService attaqueService ;
 	
 	//Ok
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Attaque.class)
 	@GetMapping("")
 	public List<Attaque> getAll() {
 		return attaqueService.getAll();
@@ -36,7 +36,7 @@ public class AttaqueRestController {
 	
 	//Ok
 	@GetMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Attaque.class)
 	public Attaque getById(@PathVariable Long id) {
 		return attaqueService.getById(id);
 	}
@@ -63,7 +63,7 @@ public class AttaqueRestController {
 		return attaqueService.create(attaque);
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Attaque.class)
 	@PutMapping("/{id}")
 	public Attaque update(@RequestBody Attaque attaque, @PathVariable Long id) {
 		attaque.setId(id);

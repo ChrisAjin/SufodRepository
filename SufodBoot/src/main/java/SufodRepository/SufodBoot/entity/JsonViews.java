@@ -30,11 +30,15 @@ public class JsonViews {
 
 	}
 	
-		
 	public static class PersonnagesWithCompte extends Common {
 
 	}
-	
+	public static class Personnage extends Common {
+
+	}
+	public static class Attaque extends Common {
+
+	}
 	public static class PersonnagesWithAttaque extends Common {
 
 	}

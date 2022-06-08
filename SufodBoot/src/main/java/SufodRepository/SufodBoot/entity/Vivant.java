@@ -45,8 +45,6 @@ public abstract class Vivant {
 	@JsonView(JsonViews.Common.class)
 	protected int pv;
 		
-	
-		
 	@JsonView(JsonViews.Common.class)
 	protected int defense;
 	

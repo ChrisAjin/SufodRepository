@@ -93,7 +93,26 @@ public class BDDTest {
 		e3.setPv(2000);
 
 		itemService.create(e3);
+		Admin admin = new Admin();
+		admin.setMail("mailTest");
+		admin.setNom("Nomtest");
+		admin.setPrenom("PrenomTest");
+		admin.setPassword("PasswordTest");
+		admin.setPseudo("Pseudotest");
+		
+		Joueur j1 = new Joueur();
+		j1.setMail("Joueurmail");
+		j1.setNom("JoueurNom");
+		j1.setPrenom("JoueurPrenom");
+		j1.setPassword("JoueurMdp");
+		j1.setPseudo("JoueurPseudo");
+		
 
+	
+
+		compteServices.create(j1);
+
+		compteServices.create(admin);
 		Personnage p1 = new Personnage();
 		p1.setAttaque(a3);;
 		p1.setDefense(22);
@@ -105,6 +124,7 @@ public class BDDTest {
 		Set<Item> setEquip = new HashSet<Item>();
 		setEquip.add(e3);
 		p1.setItems(setEquip);
+		p1.setCompte(j1);
 
 		// p1.setEquipTete(e3);
 		personnageService.create(p1);
@@ -143,28 +163,9 @@ public class BDDTest {
 		itemService.create(i1);
 		itemService.create(e1);
 
-		Admin admin = new Admin();
-		admin.setMail("mailTest");
-		admin.setNom("Nomtest");
-		admin.setPrenom("PrenomTest");
-		admin.setPassword("PasswordTest");
-		admin.setPseudo("Pseudotest");
+		
 
-		compteServices.create(admin);
-
-		Joueur j1 = new Joueur();
-		j1.setMail("Joueurmail");
-		j1.setNom("JoueurNom");
-		j1.setPrenom("JoueurPrenom");
-		j1.setPassword("JoueurMdp");
-		j1.setPseudo("JoueurPseudo");
-		Set<Personnage> setPer = new HashSet<Personnage>();
-		setPer.add(p1);
-		j1.setPersonnage(setPer);
-
-		p1.setCompte(j1);
-
-		compteServices.create(j1);
+		
 
 	}
 }
