@@ -55,14 +55,14 @@ public class EquipementRestController {
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Equipement create(@RequestBody Equipement equipement) {
-		return (Equipement) itemService.create(equipement);
+		return (Equipement) itemService.createEquipement(equipement);
 	}
 	
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
 	public Equipement update(@RequestBody Equipement equipement, @PathVariable Long id) {
 		equipement.setId(id);
-		return (Equipement) itemService.update(equipement);
+		return (Equipement) itemService.updateEquipement(equipement);
 	}
 	
 	

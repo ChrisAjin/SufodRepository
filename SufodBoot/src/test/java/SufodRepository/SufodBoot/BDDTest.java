@@ -91,8 +91,9 @@ public class BDDTest {
 		e3.setLibelle("Equipement_Test_3");
 		e3.setLocalisation(PartieCorps.bras_droit);
 		e3.setPv(2000);
-
 		itemService.create(e3);
+		
+		
 		Admin admin = new Admin();
 		admin.setMail("mailTest");
 		admin.setNom("Nomtest");
@@ -125,6 +126,7 @@ public class BDDTest {
 		setEquip.add(e3);
 		p1.setItems(setEquip);
 		p1.setCompte(j1);
+		p1.setItems(setEquip);
 
 		// p1.setEquipTete(e3);
 		personnageService.create(p1);

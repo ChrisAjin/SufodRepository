@@ -59,6 +59,15 @@ public class ItemService {
 		}
 		return itemRepo.save(item);
 	}
+	
+	public Equipement createEquipement(Equipement equipement) {
+		if (equipement.getId() != null) {
+			throw new ItemException("id auto");
+		}
+		return itemRepo.save(equipement);
+	}
+	
+
 
 	public Item update(Item item) {
 		Item itemEnBase = getById(item.getId());
@@ -67,6 +76,20 @@ public class ItemService {
 		itemEnBase.setDropChance(item.getDropChance());
 		return itemRepo.save(itemEnBase);
 	}
+	
+	public Equipement updateEquipement(Equipement equipement) {
+		Equipement equipementEnBase = (Equipement) getById(equipement.getId());
+		equipementEnBase.setLibelle(equipement.getLibelle());
+		equipementEnBase.setDescription(equipement.getDescription());
+		equipementEnBase.setDropChance(equipement.getDropChance());
+		equipementEnBase.setAttaque(equipement.getAttaque());
+		equipementEnBase.setDefense(equipement.getDefense());
+		equipementEnBase.setPv(equipement.getPv());
+		equipementEnBase.setLocalisation(equipement.getLocalisation());
+		return itemRepo.save(equipementEnBase);
+	}
+	
+	
 
 	public void delete(Item item) {
 

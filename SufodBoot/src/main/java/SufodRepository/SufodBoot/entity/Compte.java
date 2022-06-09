@@ -1,5 +1,7 @@
 package SufodRepository.SufodBoot.entity;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,6 +17,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -38,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 	@Type(value=Admin.class,name="admin"),
 	@Type(value=Joueur.class,name="joueur")
 })
-public abstract class Compte {
+public abstract class Compte implements UserDetails {
 
 	
 /*----------- Attributs -----------*/
@@ -64,7 +70,6 @@ public abstract class Compte {
 	protected String password;
 	
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty
 	protected String mail;
 	
 	@JsonView(JsonViews.CompteWithPersonnage.class)
@@ -173,8 +178,35 @@ public abstract class Compte {
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + this.getClass().getSimpleName().toUpperCase()));
+	}
 
+	@Override
+	public String getUsername() {
+		return pseudo;
+	}
 
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
 	
 

@@ -3,6 +3,7 @@ package SufodRepository.SufodBoot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import SufodRepository.SufodBoot.entity.Admin;
@@ -17,6 +18,9 @@ public class CompteServices {
 	
 	@Autowired
 	private CompteRepository compteRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	public Compte getByPseudo(String pseudo) {
 		return compteRepository.findByPseudo(pseudo).orElseThrow(CompteException::new);
@@ -51,6 +55,7 @@ public class CompteServices {
 	}
 
 	public Compte create(Compte compte) {
+		compte.setPassword(passwordEncoder.encode( compte.getPassword()));
 		return compteRepository.save(compte);
 	}
 

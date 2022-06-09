@@ -24,7 +24,7 @@ public class Monstre extends Vivant{
 	/*----------- Attributs -----------*/
 	@ManyToOne
 	@JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "monstre_attaque_id_fk"))
-	@JsonView(JsonViews.MonstresWithAttaque.class)
+	@JsonView(JsonViews.Common.class)
 	private Attaque attaque;
 	
 	@JsonView(JsonViews.Common.class)

@@ -31,11 +31,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "item")
 @SequenceGenerator(sequenceName = "seqItem", name = "seqItemSufod")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ @Type(value = Equipement.class, name = "equipement"),
-		@Type(value = Ingredient.class, name = "ingredient") })
+@JsonSubTypes({
+		@Type(value = Equipement.class, name = "equipement"),
+		@Type(value = Ingredient.class, name = "ingredient") 
+		})
 
 public abstract class Item {
-	
+	//@JsonView({ JsonViews.Common.class })
 	@ManyToMany(mappedBy = "items")
 	List<Personnage> personnages;
 	@JsonView({ JsonViews.Common.class })

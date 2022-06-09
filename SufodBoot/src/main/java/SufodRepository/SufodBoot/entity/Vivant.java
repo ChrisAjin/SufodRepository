@@ -49,14 +49,6 @@ public abstract class Vivant {
 	protected int defense;
 	
 
-	
-
-	
-	//@ManyToMany
-	//@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
-
-	
-
 	/*----------- Constrictors -----------*/
 	
 	
