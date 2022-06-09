@@ -1,5 +1,6 @@
 package SufodRepository.SufodBoot.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import SufodRepository.SufodBoot.entity.Admin;
 import SufodRepository.SufodBoot.entity.Compte;
 import SufodRepository.SufodBoot.entity.Joueur;
+import SufodRepository.SufodBoot.entity.Personnage;
 import SufodRepository.SufodBoot.exception.CompteException;
 import SufodRepository.SufodBoot.repository.CompteRepository;
+import SufodRepository.SufodBoot.repository.PersonnageRepository;
 
 @Service
 public class CompteServices {
@@ -18,6 +21,10 @@ public class CompteServices {
 	
 	@Autowired
 	private CompteRepository compteRepository;
+	@Autowired
+	private PersonnageService personnageService;
+	@Autowired
+	private PersonnageRepository personnageRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -73,11 +80,19 @@ public class CompteServices {
 //	}
 
 	public void delete(Compte compte) {
-		compteRepository.delete(compte);
-	}
+//		List<Personnage> listperso = new ArrayList<Personnage>();
+//		listperso = personnageRepository.findPersonnagesByIdCompte(compte.getId());
+//		for( Personnage p :listperso ) {
+//		personnageService.delete(p);
+//	}
+		
+		compteRepository.delete(compte);}
+	
 
 	public void deleteById(Long id) {
 		Compte compte = getById(id);
+		compte.setId(id);
+		personnageRepository.deletePerso(id);
 		compteRepository.delete(compte);
 	}
 	

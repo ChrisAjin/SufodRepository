@@ -25,7 +25,7 @@ public class Personnage extends Vivant {
 	private int xp;
 
 	@JsonView({JsonViews.PersonnagesWithCompte.class,JsonViews.Personnage.class})
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "personnage_compte_id_fk"))
 	private Compte compte;
 	

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -72,8 +75,13 @@ public abstract class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	protected String mail;
 	
-	@JsonView(JsonViews.CompteWithPersonnage.class)
-	@OneToMany(mappedBy = "compte")
+	//@JsonView(JsonViews.CompteWithPersonnage.class)
+	@OneToMany(mappedBy = "compte",cascade = { 
+			CascadeType.PERSIST, 
+			CascadeType.MERGE 
+			} )
+	
+
 	private Set<Personnage> personnages;
 	
 

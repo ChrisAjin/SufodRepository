@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import SufodRepository.SufodBoot.entity.Attaque;
+import SufodRepository.SufodBoot.entity.Compte;
 import SufodRepository.SufodBoot.entity.Personnage;
 
 public interface PersonnageRepository extends JpaRepository<Personnage, Long>{
@@ -26,6 +27,14 @@ public interface PersonnageRepository extends JpaRepository<Personnage, Long>{
 	@Modifying
 	@Transactional
 	@Query("update Personnage p set p.attaque=null where p.attaque=:attaque")
-	public void setAttaqueToNull(@Param("attaque") Attaque attaque);
-
+	void setAttaqueToNull(@Param("attaque") Attaque attaque);
+	
+	@Modifying
+	@Transactional
+	@Query("update Personnage p set p.compte=null where p.compte=:compte")
+	void setCompteToNull(@Param("compte") Compte compte);
+	@Modifying
+	@Transactional
+	@Query(value = "delete from personnage p where p.compte_id=:id", nativeQuery = true)
+	void deletePerso(@Param("id") Long id);
 }
